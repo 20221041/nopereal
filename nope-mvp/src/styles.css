@@ -166,10 +166,10 @@ input{font-family:inherit}
 .card-body{
   padding: 14px;
 }
-.title{
-  font-size: 18px;
-  margin: 0 0 8px 0;
-  line-height: 1.2;
+.title {
+    font-size: 14px;
+    margin: 0 0 6px 0;
+    line-height: 1.1;
 }
 .desc{
   margin: 0;
@@ -511,19 +511,20 @@ input{font-family:inherit}
   color: rgba(90,110,255,.95);
 }
 
-.pill-btn { /* New definition for pill-btn */
-  width: 65px;
-  height: 30px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.8);
-  color: var(--text);
-  font-size: 13px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
+.pill-btn {
+    width: 50px;
+    height: 25px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, .8);
+    color: var(--text);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    margin-bottom: 7px;
 }
 
 .scrap-button {
