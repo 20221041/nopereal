@@ -1,0 +1,561 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --primary: #5a6eff;
+  --primary-weak:#eef0ff;
+  --danger:#ff4d4f;
+  --shadow: 0 10px 30px rgba(17,24,39,0.08);
+  --radius: 18px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  color:var(--text);
+  background: #0b0f1a; /* 화면 프레임 배경 */
+}
+
+a{color:inherit; text-decoration:none}
+button{font-family:inherit}
+input{font-family:inherit}
+
+.app-frame{
+  width: 390px;           /* 모바일 프레임 느낌 */
+  max-width: 100vw;
+  height: 844px; /* Restored fixed height */
+  max-height: 100vh;
+  margin: 0 auto;
+  background: var(--bg);
+  border-radius: 22px;
+  /* overflow: hidden; Removed to allow scrolling in child */
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  position: relative;
+  display:flex; /* Added for flex container */
+  flex-direction:column; /* Added for vertical stacking */
+}
+
+ @media (max-width: 420px){
+  .app-frame{height:100vh; border-radius:0}
+}
+
+.safe{
+  padding-top: 14px;
+  padding-bottom: 90px; /* 탭바 공간 확보 */
+  flex-grow: 1; /* Added to take available space */
+  overflow-y: auto; /* Added for scrolling */
+  height: 100%; /* Added to ensure it fills available space */
+}
+
+.page{
+  padding: 16px;
+}
+
+.topbar{
+  height: 62px;
+  padding: 0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: linear-gradient(to bottom, rgba(246,247,251,0.98), rgba(246,247,251,0.86));
+  backdrop-filter: blur(10px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand .logo{
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: 26px;
+  color: var(--primary);
+  text-shadow: 0 6px 18px rgba(123,128,255,.25);
+}
+
+.icon-row{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.badge-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--danger);
+  box-shadow: 0 6px 14px rgba(255,77,79,.35);
+}
+
+.section-title{
+  font-size: 14px; /* Reverted to original */
+  color: var(--muted);
+  margin: 6px 0 10px 2px;
+}
+
+.chips{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.chip{
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.6);
+  color: #374151;
+  font-size: 14px;
+  cursor:pointer;
+}
+.chip.selected{
+  background: var(--primary-weak);
+  border-color: rgba(123,128,255,.55);
+  color: #2b2f9b;
+}
+
+.search-row{
+  display:flex;
+  gap: 10px;
+  margin: 10px 0 14px 0;
+}
+.search{
+  flex:1;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  padding: 0 14px;
+  background: rgba(255,255,255,.85);
+}
+
+.card{
+  background: var(--card);
+  border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.card + .card{margin-top: 14px}
+
+.thumb{
+  height: 168px;
+  background: linear-gradient(135deg, rgba(123,128,255,.25), rgba(0,0,0,.02));
+  display:flex;
+  align-items:flex-end;
+  padding: 14px;
+}
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.85);
+  border: 1px solid rgba(229,231,235,.9);
+  font-size: 12px;
+  color: #374151;
+}
+.card-body{
+  padding: 14px;
+}
+.title{
+  font-size: 20px;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+.desc{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px; /* Reverted to original */
+  line-height: 1.45;
+}
+
+.post-title { /* REMOVED THIS CLASS */
+  /* font-size: 15px; */
+  /* font-weight: 900; */
+}
+
+.row-between{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 10px;
+}
+
+.primary-btn{
+  border: 0;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: white;
+  cursor:pointer;
+}
+.primary-btn:active{transform: translateY(1px)}
+
+.banner{
+  margin-top: 14px;
+  border-radius: var(--radius);
+  padding: 18px;
+  background: linear-gradient(135deg, rgba(35,60,250,.88), rgba(123,128,255,.75));
+  color: white;
+  border: 1px solid rgba(255,255,255,.25);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+}
+.banner .cta{
+  background: rgba(255,255,255,.85);
+  color: #1f2a70;
+  border: 0;
+  padding: 12px 16px;
+  border-radius: 999px;
+  cursor:pointer;
+  font-weight: 700;
+}
+
+.bottom-tab{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 82px;
+  background: rgba(246,247,251,.92);
+  border-top: 1px solid rgba(229,231,235,.9);
+  backdrop-filter: blur(12px);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-around;
+  padding-top: 10px;
+}
+.tab{
+  width: 20%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 12px;
+  cursor:pointer;
+}
+.tab .dot{
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(17,24,39,.04);
+  border: 1px solid rgba(229,231,235,.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.tab.active{
+  color: var(--primary);
+}
+.tab.active .dot{
+  background: var(--primary-weak);
+  border-color: rgba(123,128,255,.55);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.mini-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.04);
+  padding: 14px;
+}
+
+.kv{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(229,231,235,.9);
+}
+.kv + .kv{margin-top: 10px}
+.kv .k{color: var(--muted); font-size: 13px}
+.kv .v{font-weight: 700; font-size: 13px}
+
+/* Chat Page Specific Styles */
+.chat-page{
+  max-width: 420px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+/* 헤더 */
+.chat-header{
+  height: 64px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  background: #fff;
+}
+
+.chat-header-left{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: rgba(90,110,255,.12);
+  border: 1px solid rgba(90,110,255,.18);
+  display: grid;
+  place-items: center;
+}
+
+.chat-avatar-hand{
+  font-size: 18px;
+}
+
+.chat-header-text{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chat-title{
+  font-size: 15px;
+  color: rgba(0,0,0,.88);
+  line-height: 1.1;
+}
+
+.chat-subtitle{
+  font-size: 12px;
+  color: rgba(0,0,0,.5);
+  line-height: 1.1;
+}
+
+.chat-header-more{
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(0,0,0,.03);
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 0;
+  color: rgba(0,0,0,.6);
+}
+
+/* 바디 */
+.chat-body{
+  flex: 1;
+  overflow: auto;
+  padding: 12px 14px 10px 14px;
+  background: #fff;
+}
+
+/* 날짜 구분선 */
+.date-sep{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 14px 0;
+}
+
+.date-line{
+  flex: 1;
+  height: 1px;
+  background: rgba(0,0,0,.10);
+}
+
+.date-pill{
+  font-size: 11px;
+  color: rgba(0,0,0,.45);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.04);
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+/* 메시지 */
+.msg-row{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.msg-row.right{
+  justify-content: flex-end;
+}
+
+.msg-row.left{
+  justify-content: flex-start;
+}
+
+.msg-side-avatar{
+  width: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.side-avatar{
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  background: rgba(90,110,255,.12);
+  border: 1px solid rgba(90,110,255,.18);
+  display: grid;
+  place-items: center;
+}
+
+.side-avatar-hand{
+  font-size: 14px;
+}
+
+.msg-col{
+  max-width: 78%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.msg-name{
+  font-size: 11px;
+  color: rgba(0,0,0,.5);
+  margin-left: 4px;
+}
+
+.msg-bubble{
+  padding: 12px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  border: 1px solid rgba(0,0,0,.06);
+  word-break: keep-all;
+  white-space: normal;
+}
+
+.msg-bubble.user{
+  background: rgba(90,110,255,.95);
+  color: #fff;
+  border: 1px solid rgba(90,110,255,.35);
+  border-top-right-radius: 8px;
+}
+
+.msg-bubble.assistant{
+  background: rgba(0,0,0,.04);
+  color: rgba(0,0,0,.86);
+  border-top-left-radius: 8px;
+}
+
+/* 입력바 */
+.chat-inputbar{
+  padding: 10px 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid rgba(0,0,0,.06);
+  background: #fff;
+}
+
+.chat-plus{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(0,0,0,.03);
+  cursor: pointer;
+  font-size: 20px;
+  color: rgba(0,0,0,.55);
+  line-height: 0;
+}
+
+.chat-input{
+  flex: 1;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(0,0,0,.03);
+  padding: 0 14px;
+  outline: none;
+  font-size: 13px;
+}
+
+
+.chat-send{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(90,110,255,.22);
+  background: rgba(90,110,255,.12);
+  cursor: pointer;
+  font-size: 16px;
+  color: rgba(90,110,255,.95);
+}
+
+.pill-btn { /* New definition for pill-btn */
+  width: 45px;
+  height: 21px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.8);
+  color: var(--text);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrap-button {
+  width: 45px;
+  height: 21px;
+  border-radius: 10px;
+  background-color: #E8F0FF;
+  color: #7D81F5;
+  font-size: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.fab { /* New definition for FAB button */
+  width: 50px;
+  height: 50px;
+  border-radius: 999px; /* Make it circular */
+  background-color: #E8F0FF;
+  position: absolute;
+  bottom: 132px;
+  right: 16px;
+  z-index: 100;
+  border: 0; /* Changed from none */
+  /* box-shadow: 0 4px 12px rgba(0,0,0,0.1); Optional: Add a subtle shadow */
+  outline: none; /* Added to remove outline */
+  border-color: transparent; /* Added to ensure no border color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 28px;
+  color: #7D81F5;
+  font-weight: normal;
+}
