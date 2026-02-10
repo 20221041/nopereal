@@ -38,7 +38,7 @@ export default function CommunityPage() {
 
       <div className="search-row">
         <button className="pill-btn" type="button" onClick={() => setSort(sort === "latest" ? "popular" : "latest")}>
-          정렬: {sort === "latest" ? "최신순" : "인기순"}
+          {sort === "latest" ? "최신순" : "인기순"}
         </button>
         <input className="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="게시글 검색" />
       </div>

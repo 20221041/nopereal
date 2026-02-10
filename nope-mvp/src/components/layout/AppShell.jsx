@@ -41,16 +41,6 @@ export default function AppShell() {
       </div>
       <BottomTabBar activeTab={activeTab} onChange={handleTabChange} />
 
-      {showFab && (
-        <button
-          className="fab"
-          type="button"
-          aria-label="글쓰기"
-          onClick={() => navigate("/community/write")}
-        >
-          +
-        </button>
-      )}
     </div>
   );
 }
