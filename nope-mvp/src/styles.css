@@ -146,11 +146,11 @@ input{font-family:inherit}
 .card + .card{margin-top: 14px}
 
 .thumb{
-  height: 168px;
-  background: linear-gradient(135deg, rgba(123,128,255,.25), rgba(0,0,0,.02));
-  display:flex;
-  align-items:flex-end;
-  padding: 14px;
+    height: 90px;
+    background: linear-gradient(135deg, rgba(123, 128, 255, .25), rgba(0, 0, 0, .02));
+    display:flex;
+    align-items:flex-end;
+    padding: 14px;
 }
 .tag{
   display:inline-flex;
