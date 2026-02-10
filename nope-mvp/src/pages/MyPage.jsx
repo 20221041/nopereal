@@ -16,7 +16,7 @@ export default function MyPage() {
       {/* Profile */}
       <div style={s.profileRow}>
         <div style={s.profileAvatar}>
-          <span style={{ fontSize: 26, color: "#6B7CFF" }}>✋</span>
+          <span style={{ fontSize: 22, color: "#6B7CFF" }}>✋</span>
         </div>
 
         <button style={s.profileNameBtn} onClick={() => alert("프로필/개인정보로 이동")}>
@@ -102,19 +102,19 @@ const s = {
   page: {
     minHeight: "100vh",
     background: "#FFFFFF",
-    paddingBottom: 86, // 탭바 공간
+    paddingBottom: 73, // 탭바 공간
     fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Apple SD Gothic Neo, sans-serif",
   },
 
   profileRow: {
     display: "flex",
     alignItems: "center",
-    gap: 14,
-    padding: "16px 18px 8px",
+    gap: 12,
+    padding: "14px 15px 7px",
   },
   profileAvatar: {
-    width: 70,
-    height: 70,
+    width: 60,
+    height: 60,
     borderRadius: 999,
     background: "#EEF2FF",
     display: "grid",
@@ -123,45 +123,45 @@ const s = {
   profileNameBtn: {
     display: "flex",
     alignItems: "baseline",
-    gap: 8,
+    gap: 7,
     border: "none",
     background: "transparent",
     cursor: "pointer",
     padding: 0,
   },
-  profileName: { fontSize: 40, fontWeight: 900, color: "#6B7CFF", lineHeight: 1 },
-  profileSuffix: { fontSize: 18, fontWeight: 700, color: "#6B7CFF" },
-  profileArrow: { fontSize: 26, color: "#6B7CFF", marginLeft: 4 },
+  profileName: { fontSize: 34, fontWeight: 900, color: "#6B7CFF", lineHeight: 1 },
+  profileSuffix: { fontSize: 15, fontWeight: 700, color: "#6B7CFF" },
+  profileArrow: { fontSize: 22, color: "#6B7CFF", marginLeft: 3 },
 
   statsCard: {
-    margin: "8px 18px 10px",
-    padding: "14px 10px",
-    borderRadius: 14,
+    margin: "7px 15px 9px",
+    padding: "12px 9px",
+    borderRadius: 12,
     border: "1px solid #E8EAF1",
     display: "flex",
     alignItems: "stretch",
     justifyContent: "space-between",
   },
   statCol: { flex: 1, textAlign: "center" },
-  statLabel: { color: "#5B5F6A", fontWeight: 700, fontSize: 18 },
-  statValue: { color: "#6B7CFF", fontWeight: 900, fontSize: 28, marginTop: 10 },
-  statUnit: { fontSize: 16, fontWeight: 800, marginLeft: 4 },
+  statLabel: { color: "#5B5F6A", fontWeight: 700, fontSize: 15 },
+  statValue: { color: "#6B7CFF", fontWeight: 900, fontSize: 24, marginTop: 9 },
+  statUnit: { fontSize: 14, fontWeight: 800, marginLeft: 3 },
 
-  vLine: { width: 1, background: "#E8EAF1", margin: "0 6px" },
+  vLine: { width: 1, background: "#E8EAF1", margin: "0 5px" },
 
   ctaRow: {
     display: "flex",
     justifyContent: "center",
-    gap: 18,
-    padding: "22px 18px 8px",
+    gap: 15,
+    padding: "19px 15px 7px",
   },
   ctaBlock: { width: "50%", display: "flex", flexDirection: "column", alignItems: "center" },
 
   circleBtn: {
-    width: 150,
-    height: 150,
+    width: 128,
+    height: 128,
     borderRadius: 999,
-    border: "14px solid #C9D1FF",
+    border: "12px solid #C9D1FF",
     background: "#7C86FF",
     color: "#fff",
     fontWeight: 900,
@@ -170,38 +170,38 @@ const s = {
   },
   circleInnerText: {
     whiteSpace: "pre-line",
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 1.2,
   },
   circleArrow: {
     position: "absolute",
     left: "50%",
-    bottom: 18,
+    bottom: 15,
     transform: "translateX(-50%)",
-    fontSize: 22,
+    fontSize: 19,
     opacity: 0.95,
   },
   ctaDesc: {
     whiteSpace: "pre-line",
     textAlign: "center",
     color: "#8B8F99",
-    fontSize: 12,
+    fontSize: 10,
     lineHeight: 1.35,
-    marginTop: 14,
+    marginTop: 12,
   },
 
-  list: { marginTop: 18, borderTop: "1px solid #F0F2F6" },
+  list: { marginTop: 15, borderTop: "1px solid #F0F2F6" },
   listRow: {
     width: "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "18px 18px",
+    padding: "15px 15px",
     border: "none",
     background: "#fff",
     cursor: "pointer",
     borderBottom: "1px solid #F0F2F6",
   },
-  listText: { fontSize: 22, fontWeight: 800, color: "#7A7F8A" },
-  listArrow: { fontSize: 26, color: "#A6AAB3" },
+  listText: { fontSize: 19, fontWeight: 800, color: "#7A7F8A" },
+  listArrow: { fontSize: 22, color: "#A6AAB3" },
 };
