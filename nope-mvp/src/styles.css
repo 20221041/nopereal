@@ -201,17 +201,18 @@ input{font-family:inherit}
 }
 .primary-btn:active{transform: translateY(1px)}
 
-.banner{
-  margin-top: 14px;
-  border-radius: var(--radius);
-  padding: 18px;
-  background: linear-gradient(135deg, rgba(35,60,250,.88), rgba(123,128,255,.75));
-  color: white;
-  border: 1px solid rgba(255,255,255,.25);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
+.banner {
+    margin-top: 0px;
+    margin-bottom: 14px;
+    border-radius: var(--radius);
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(35, 60, 250, .88), rgba(123, 128, 255, .75));
+    color: white;
+    border: 1px solid rgba(255, 255, 255, .25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1px;
 }
 .banner .cta{
   background: rgba(255,255,255,.85);
