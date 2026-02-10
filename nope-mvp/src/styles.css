@@ -560,3 +560,8 @@ input{font-family:inherit}
   color: #7D81F5;
   font-weight: normal;
 }
+
+.pill-btn.active-scrap {
+  background-color: #e8f0ff; /* Light sky blue */
+  border-color: rgba(123,128,255,.55); /* Reusing a primary weak border color for consistency */
+}

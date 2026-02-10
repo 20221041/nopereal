@@ -8,7 +8,7 @@ export const categories = [
   { id: "invest", label: "투자스캠" }, // New
   { id: "gov", label: "관공서사칭" },  // New
   { id: "threat", label: "협박성피싱" },// New
-  { id: "more", label: "더보기" },
+  { id: "more", label: "전체" },
 ];
 
 export const newsItems = [

@@ -48,8 +48,8 @@ export default function CommunityPage() {
           <div key={p.id} className="mini-card">
             <div className="row-between">
               <div style={{ fontWeight: 900 }}>{p.title}</div>
-              <button className="pill-btn" type="button" onClick={() => togglePost(p)}>
-                {hasPost(p.id) ? "저장됨" : "스크랩"}
+              <button className={`pill-btn ${hasPost(p.id) ? 'active-scrap' : ''}`} type="button" onClick={() => togglePost(p)} title="스크랩 토글">
+                {hasPost(p.id) ? "해제" : "스크랩"}
               </button>
             </div>
             <div style={{ height: 8 }} />

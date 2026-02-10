@@ -52,15 +52,15 @@ export default function NewsPage() {
           onClick={goDetail}
           rightSlot={
             <button
-              className="pill-btn"
+              className={`pill-btn ${hasNews(item.id) ? 'active-scrap' : ''}`}
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 toggleNews(item);
               }}
-              title="스크랩"
+              title="스크랩 토글"
             >
-              {hasNews(item.id) ? "저장됨" : "스크랩"}
+              {hasNews(item.id) ? "해제" : "스크랩"}
             </button>
           }
         />
