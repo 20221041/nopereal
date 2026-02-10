@@ -25,7 +25,20 @@ export default function NewsPage() {
 
   return (
     <div className="page">
-      <div className="section-title">정보뉴스</div>
+      {/* Moved banner to the top */}
+      <div className="banner">
+        <div>
+          <div style={{ fontSize: 14, opacity: 0.9 }}>오늘의 주의 메시지</div>
+          <div style={{ fontSize: 18, fontWeight: 800, marginTop: 4 }}>사기 주의보</div>
+        </div>
+        <button
+          className="cta"
+          type="button"
+          onClick={() => navigate("/alert")}
+        >
+          확인하기
+        </button>
+      </div>
 
       <CategoryChips
         items={categories}
@@ -65,20 +78,6 @@ export default function NewsPage() {
           }
         />
       ))}
-
-      <div className="banner">
-        <div>
-          <div style={{ fontSize: 14, opacity: 0.9 }}>오늘의 주의 메시지</div>
-          <div style={{ fontSize: 18, fontWeight: 800, marginTop: 4 }}>사기 주의보</div>
-        </div>
-        <button
-          className="cta"
-          type="button"
-          onClick={() => navigate("/alert")}
-        >
-          확인하기
-        </button>
-      </div>
     </div>
   );
 }

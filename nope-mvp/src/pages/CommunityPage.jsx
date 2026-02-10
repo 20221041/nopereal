@@ -32,7 +32,7 @@ export default function CommunityPage() {
 
   return (
     <div className="page" style={{ position: "relative" }}>
-      <div className="section-title">커뮤니티</div>
+
 
       <CategoryChips items={categories} selectedId={selectedCategoryId} onSelect={setSelectedCategoryId} />
 

@@ -8,6 +8,8 @@ import NewsDetailPage from "./pages/NewsDetailPage.jsx";
 import NewsPage from "./pages/NewsPage.jsx";
 import ScrapPage from "./pages/ScrapPage.jsx";
 import WritePostPage from "./pages/WritePostPage.jsx";
+import PreCheck from "./pages/PreCheck.jsx"; // New import
+import Result from "./pages/Result.jsx";     // New import
 import { ScrapProvider } from "./state/ScrapContext";
 import { CommunityProvider } from "./state/CommunityContext"; // Add this import
 
@@ -24,6 +26,8 @@ const router = createBrowserRouter([
       { path: "/chat", element: <ChatPage /> },
       { path: "/scrap", element: <ScrapPage /> },
       { path: "/mypage", element: <MyPage /> },
+      { path: "/precheck", element: <PreCheck /> }, // New route
+      { path: "/result", element: <Result /> },     // New route
     ],
   },
 ]);

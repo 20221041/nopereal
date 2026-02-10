@@ -18,7 +18,7 @@ export default function ScrapPage() {
 
   return (
     <div className="page">
-      <div className="section-title">스크랩 페이지</div>
+
 
       {!hasScraps && (
         <p style={{ textAlign: "center", color: "var(--muted)", marginTop: "40px" }}>
