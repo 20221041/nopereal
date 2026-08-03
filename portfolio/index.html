@@ -365,6 +365,15 @@ html.js .chart.go .fill{width:var(--w,0%)}
   color:#aab2ff;font-size:.8rem;font-weight:800;padding:8px 16px;border-radius:999px;letter-spacing:.06em}
 .patent h3{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin-bottom:10px}
 .patent .pt-sub{color:#b9b9c2;font-size:.9rem;margin-bottom:30px}
+.patent .pt-why{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-bottom:34px;
+  border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14);padding:28px 0}
+@media (max-width:880px){.patent .pt-why{grid-template-columns:1fr;gap:20px}}
+.patent .pt-why .lbl{font-size:.75rem;font-weight:800;letter-spacing:.22em;margin-bottom:12px}
+.patent .pt-why .lbl.q{color:#8a8a96}
+.patent .pt-why .lbl.a{color:#aab2ff}
+.patent .pt-why p{font-size:.95rem;line-height:1.75;color:#d6d6de}
+.patent .pt-why p strong{color:#fff}
+.patent .pt-why .strike{color:#8a8a96;text-decoration:line-through;text-decoration-color:rgba(255,255,255,.35)}
 .patent .pt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media (max-width:880px){.patent .pt-grid{grid-template-columns:1fr}}
 .patent .pt-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:22px;
@@ -840,26 +849,43 @@ html:not(.js) .sc-96 .stick{padding:110px 24px}
         <span class="pt-badge" style="background:rgba(170,178,255,.14);color:#aab2ff">산업통상자원부 R&amp;D 과제</span>
       </div>
       <h3>모듈형 돌봄 로봇 <span style="font-weight:600;color:#b9b9c2;font-size:.7em">Modular Care Robots</span></h3>
-      <p class="pt-sub">노년층과 정서적으로 교감하면서, 필요한 순간에는 이동까지 돕는 돌봄 로봇.
-      기획 단계의 아이디어를 특허라는 지식재산으로 완성했습니다. — 성신여자대학교 산학협력단 출원, 발명자 등재</p>
+      <p class="pt-sub">WillChair에서 확인한 이동약자의 문제의식을 하드웨어로 확장한 프로젝트.
+      리서치에서 출발한 아이디어를 지식재산으로 완성해, 성신여자대학교 산학협력단 명의로 출원하고 발명자로 등재되었습니다.</p>
+
+      <div class="pt-why">
+        <div>
+          <div class="lbl q">PROBLEM — 돌봄의 두 가지 공백</div>
+          <p>기존 돌봄 기술은 반쪽짜리였습니다. <span class="strike">애완형 로봇은 동물 흉내 수준이라 진짜 교감이 어렵고</span>,
+          <span class="strike">휠체어 같은 이동 보조기기는 몸만 옮길 뿐 마음을 돌보지 못합니다.</span>
+          혼자 지내는 노년층에게 정서적 고립과 이동의 어려움은 <strong>동시에 오는 문제</strong>인데,
+          시장에는 둘을 함께 푸는 제품이 없었습니다.</p>
+        </div>
+        <div>
+          <div class="lbl a">ANSWER — 분리와 합체, 모듈형이라는 해법</div>
+          <p>그래서 로봇을 <strong>둘로 쪼갰습니다.</strong> 평소에는 감정을 읽고 대화하는 작은 AI 동반자(헤드)가 곁에 머물고,
+          외출할 때는 자율주행 바디와 합체해 <strong>의자이자 탈것</strong>이 됩니다.
+          분리된 헤드가 앞장서 길을 안내하고 바디가 뒤따르는 구조 — 돌봄과 이동이 하나의 흐름으로 이어지는
+          이 결합 방식 자체가 특허의 핵심 청구입니다.</p>
+        </div>
+      </div>
       <div class="pt-grid">
         <div class="pt-item">
           <span class="icon">🤖</span>
-          <h5>분리·합체되는 감정교감 헤드</h5>
-          <p>비전 카메라로 사용자의 행동과 표정을 읽어 감정을 실시간 인식하는 AI 헤드부.
-          디스플레이로 감정을 표현하며, 본체와 분리되면 앞서 길을 안내하는 동반자가 됩니다.</p>
+          <h5>정서적 고립을 푸는 AI 헤드</h5>
+          <p>비전 카메라로 표정과 행동을 읽어 감정 변화를 실시간 인식하고, 디스플레이로 감정을 표현하며 반응합니다.
+          '흉내'가 아니라 <b style="color:#fff">읽고 답하는 교감</b>으로 혼자 있는 시간을 채웁니다.</p>
         </div>
         <div class="pt-item">
           <span class="icon">🦽</span>
-          <h5>의자가 되고, 이동수단이 되는 바디</h5>
-          <p>자율주행 이동바디는 멈추면 의자로, 달리면 탈것으로 변합니다.
-          접이식 등받이와 출몰형 발판이 탑승 과정 전체를 설계합니다.</p>
+          <h5>외출을 망설이게 하는 문턱 제거</h5>
+          <p>멈추면 의자, 달리면 탈것. 접이식 등받이가 펼쳐져 지면까지 닿고 발판이 나와
+          <b style="color:#fff">타고 내리는 과정 전체</b>를 도와줍니다 — 보호자 없이도 외출이 가능해집니다.</p>
         </div>
         <div class="pt-item">
           <span class="icon">🛡️</span>
-          <h5>안전을 위한 센서 설계</h5>
-          <p>팔걸이 하단 카메라 센서로 바닥 장애물을 감지하고, 초음파 센서와 IMU로
-          거리 유지와 자세 안정을 확보하는 소프트 로보틱스 기반 설계.</p>
+          <h5>신뢰를 만드는 안전 설계</h5>
+          <p>팔걸이 아래 카메라가 바닥 장애물을 미리 읽고, 초음파 센서와 IMU가 거리와 자세를 지킵니다.
+          부드러운 소프트 로보틱스 외형까지 — <b style="color:#fff">몸을 맡겨도 되는 기계</b>라는 신뢰를 설계했습니다.</p>
         </div>
       </div>
       <p class="pt-meta">출원번호 10-2025-0204466 · 출원일 2025.12.19 · 출원인 성신여자대학교 연구 산학협력단 · 디지털융합디자인 전문인력양성사업(한국디자인진흥원)</p>
