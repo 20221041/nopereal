@@ -269,6 +269,28 @@ section{padding:110px 28px}
 .cap .link{margin-top:12px;font-size:.83rem;font-weight:700;color:var(--blue);text-decoration:none}
 .cap .link:hover{text-decoration:underline}
 
+/* patent feature */
+.patent{
+  margin-top:24px;background:linear-gradient(135deg,#1c1c26,#2a2a3d);color:#fff;
+  border-radius:calc(var(--radius) + 4px);padding:48px 44px;position:relative;overflow:hidden;
+}
+.patent::before{content:"PATENT";position:absolute;right:-10px;bottom:-30px;font-size:7rem;font-weight:800;
+  letter-spacing:-.04em;color:rgba(255,255,255,.045);pointer-events:none}
+.patent .pt-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.patent .pt-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(154,162,255,.16);
+  color:#9aa2ff;font-size:.8rem;font-weight:800;padding:8px 16px;border-radius:999px;letter-spacing:.06em}
+.patent h3{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
+.patent .pt-sub{color:#b9b9c2;font-size:.9rem;margin-bottom:30px}
+.patent .pt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:880px){.patent .pt-grid{grid-template-columns:1fr}}
+.patent .pt-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);
+  border-radius:14px;padding:22px;transition:background .3s,transform .3s}
+.patent .pt-item:hover{background:rgba(255,255,255,.09);transform:translateY(-4px)}
+.patent .pt-item .icon{font-size:1.4rem}
+.patent .pt-item h5{font-size:.98rem;font-weight:800;margin:10px 0 6px}
+.patent .pt-item p{font-size:.84rem;color:#b9b9c2}
+.patent .pt-meta{margin-top:26px;font-size:.78rem;color:#8a8a96;letter-spacing:.02em}
+
 /* footer */
 footer{background:var(--ink);color:#fff;padding:110px 28px 60px;text-align:center}
 footer .dots-big{display:flex;justify-content:center;gap:10px;margin-bottom:34px}
@@ -358,7 +380,7 @@ footer .fin{margin-top:70px;font-size:.78rem;color:#6d6d78;letter-spacing:.08em}
   <div class="wrap">
     <div class="stat rv"><div class="num"><span data-count="130">0</span><span class="unit">+명</span></div><div class="lbl">리서치 참여자</div></div>
     <div class="stat rv d1"><div class="num"><span data-count="96">0</span><span class="unit">%</span></div><div class="lbl">리디자인 후 만족도</div></div>
-    <div class="stat rv d2"><div class="num"><span data-count="3">0</span><span class="unit">턴</span></div><div class="lbl">모든 기능 실행 상한</div></div>
+    <div class="stat rv d2"><div class="num"><span data-count="1">0</span><span class="unit">건</span></div><div class="lbl">특허 출원 · 발명자 등재</div></div>
     <div class="stat rv d3"><div class="num"><span data-count="2">0</span><span class="unit">회</span></div><div class="lbl">전국 단위 수상</div></div>
   </div>
 </div>
@@ -587,6 +609,37 @@ footer .fin{margin-top:70px;font-size:.78rem;color:#6d6d78;letter-spacing:.08em}
           <a class="link" href="https://youtu.be/fHHs_Bon-mk" target="_blank" rel="noopener">리릭 비디오 보기 ↗</a>
         </div>
       </div>
+    </div>
+
+    <div class="patent rv">
+      <div class="pt-head">
+        <span class="pt-badge">📜 특허 출원 · 공동 발명자</span>
+        <span class="pt-badge" style="background:rgba(255,138,106,.14);color:#ff8a6a">산업통상자원부 R&amp;D 과제</span>
+      </div>
+      <h3>모듈형 돌봄 로봇 <span style="font-weight:600;color:#b9b9c2;font-size:.7em">Modular Care Robots</span></h3>
+      <p class="pt-sub">노년층과 정서적으로 교감하면서, 필요한 순간에는 이동까지 돕는 돌봄 로봇.
+      기획 단계의 아이디어를 특허라는 지식재산으로 완성했습니다. — 성신여자대학교 산학협력단 출원, 발명자 등재</p>
+      <div class="pt-grid">
+        <div class="pt-item">
+          <span class="icon">🤖</span>
+          <h5>분리·합체되는 감정교감 헤드</h5>
+          <p>비전 카메라로 사용자의 행동과 표정을 읽어 감정을 실시간 인식하는 AI 헤드부.
+          디스플레이로 감정을 표현하며, 본체와 분리되면 앞서 길을 안내하는 동반자가 됩니다.</p>
+        </div>
+        <div class="pt-item">
+          <span class="icon">🦽</span>
+          <h5>의자가 되고, 이동수단이 되는 바디</h5>
+          <p>자율주행 이동바디는 멈추면 의자로, 달리면 탈것으로 변합니다.
+          접이식 등받이와 출몰형 발판이 탑승 과정 전체를 설계합니다.</p>
+        </div>
+        <div class="pt-item">
+          <span class="icon">🛡️</span>
+          <h5>안전을 위한 센서 설계</h5>
+          <p>팔걸이 하단 카메라 센서로 바닥 장애물을 감지하고, 초음파 센서와 IMU로
+          거리 유지와 자세 안정을 확보하는 소프트 로보틱스 기반 설계.</p>
+        </div>
+      </div>
+      <p class="pt-meta">출원번호 10-2025-0204466 · 출원일 2025.12.19 · 출원인 성신여자대학교 연구 산학협력단 · 디지털융합디자인 전문인력양성사업(한국디자인진흥원)</p>
     </div>
   </div>
 </section>
