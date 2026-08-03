@@ -62,7 +62,15 @@ nav.scrolled{border-color:var(--line)}
 .nav-links a.active-c{color:var(--coral)}
 .nav-links a.active-g{color:var(--green)}
 .nav-links a.active-b{color:var(--blue)}
-@media (max-width:640px){.nav-links{gap:16px}.nav-links li:first-child{display:none}}
+@media (max-width:640px){
+  nav{padding:14px 16px;gap:14px}
+  .nav-logo{font-size:.78rem;white-space:nowrap;flex:0 0 auto}
+  .nav-logo .dots{display:none}
+  .nav-links{gap:10px;flex:0 1 auto;justify-content:flex-end;flex-wrap:nowrap}
+  .nav-links li:first-child{display:none}
+  .nav-links a{font-size:.74rem}
+}
+@media (max-width:380px){.nav-links li:last-child{display:none}}
 
 /* progress bar */
 #bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:101;
@@ -107,7 +115,7 @@ html.js .hero h1 .word span{display:inline-block;transform:translateY(110%);
 .scroll-hint::after{content:"";width:44px;height:1px;background:var(--ink-soft);
   animation:pulse 1.8s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.2}}
-@media (max-width:640px){.scroll-hint{bottom:100px}}
+@media (max-width:640px){.scroll-hint{display:none}}
 
 /* ---------- marquee ---------- */
 .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
