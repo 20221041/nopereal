@@ -153,7 +153,7 @@ html.js .sec-head.rv.on h2,html.js .rv.on .sec-head h2{transform:none}
 .sec-b .ghost span{-webkit-text-stroke-color:rgba(49,56,238,.16)}
 
 /* about */
-#about{background:transparent}
+#about{background:transparent;overflow:hidden}
 .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:start}
 @media (max-width:820px){.about-grid{grid-template-columns:1fr;gap:36px}}
 .about-lead{font-size:clamp(1.15rem,2.4vw,1.55rem);font-weight:700;line-height:1.55;letter-spacing:-.01em}
@@ -213,7 +213,8 @@ html.js .ch-cover .plate{will-change:transform,opacity}
 .plate.g{background:linear-gradient(135deg,#17171e,#2a2a36)}
 .plate.b{background:linear-gradient(135deg,#3c3c4e,#232330)}
 .plate .big-idx{position:absolute;top:4%;left:50%;transform:translateX(-50%);font-size:clamp(8rem,26vw,20rem);font-weight:800;
-  color:rgba(255,255,255,.1);line-height:1;letter-spacing:-.05em;pointer-events:none}
+  color:rgba(255,255,255,.1);line-height:1;letter-spacing:-.05em;pointer-events:none;
+  animation:idxFloat 9s ease-in-out infinite}
 .plate .p-eyebrow{font-size:.85rem;font-weight:800;letter-spacing:.32em;opacity:.85;margin-bottom:22px}
 .plate h2{font-size:clamp(2.2rem,6.5vw,5rem);font-weight:800;letter-spacing:-.02em;line-height:1.18;padding:0 20px}
 .plate .p-sub{margin-top:22px;font-size:clamp(.95rem,1.9vw,1.15rem);opacity:.9;font-weight:500;padding:0 24px}
@@ -322,6 +323,7 @@ html.js .chart.go .fill{width:var(--w,0%)}
 .pain-sol .box{border-radius:0;padding:16px 4px;font-size:1rem;font-weight:600;display:flex;align-items:center;transition:transform .5s var(--e-out)}
 .pain-sol:hover .sol{transform:translateX(8px)}
 .pain-sol .pain{background:transparent;color:var(--ink-soft);text-decoration:line-through;text-decoration-color:rgba(14,14,18,.35);text-decoration-thickness:1.5px}
+.pain-sol.finding .pain{text-decoration:none;color:var(--ink);font-weight:600}
 .pain-sol .sol{background:transparent;color:var(--accent);font-weight:800;font-size:1.05rem}
 .pain-sol .mid{display:flex;align-items:center;color:var(--accent);font-weight:800}
 @media (max-width:680px){.pain-sol{grid-template-columns:1fr}.pain-sol .mid{transform:rotate(90deg);justify-content:center}}
@@ -358,7 +360,8 @@ html.js .chart.go .fill{width:var(--w,0%)}
 /* =========================================================
    SCENE — 96% zoom number
 ========================================================= */
-.sc-96{position:relative;background:var(--ink);padding:130px 24px}
+.sc-96{position:relative;background:var(--ink);padding:130px 24px;overflow:hidden}
+.sc-96 .orb{filter:blur(90px);opacity:.5}
 .sc-96 .stick{display:flex;flex-direction:column;align-items:center;justify-content:center;
   overflow:hidden;color:#fff;text-align:center}
 .sc-96 .n96{font-size:clamp(7rem,26vw,20rem);font-weight:800;letter-spacing:-.05em;line-height:1;
@@ -421,6 +424,33 @@ html.js .sc-96 .n96.on{opacity:1;transform:scale(1)}
 .patent .pt-item p{font-size:.84rem;color:#b9b9c2}
 .patent .pt-meta{margin-top:26px;font-size:.78rem;color:#8a8a96}
 
+/* ambient drifting orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;opacity:.55;z-index:0;
+  animation:orbDrift 28s ease-in-out infinite alternate}
+.orb.o2{animation-duration:38s;animation-delay:-14s;opacity:.4}
+@keyframes orbDrift{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(70px,-50px) scale(1.18)}
+  100%{transform:translate(-60px,60px) scale(.92)}}
+
+/* ghost type flows on its own, on top of scroll parallax */
+.ghost{animation:ghostSway 38s ease-in-out infinite alternate}
+@keyframes ghostSway{from{transform:translateX(-2.5%)}to{transform:translateX(2.5%)}}
+
+/* cover plate: wandering light + floating chapter number */
+.plate::before{content:"";position:absolute;inset:-30%;pointer-events:none;
+  background:radial-gradient(38% 38% at 32% 30%,rgba(255,255,255,.14),transparent 70%);
+  animation:plateGlow 17s ease-in-out infinite alternate}
+@keyframes plateGlow{from{transform:translate(-7%,-5%) scale(1)}to{transform:translate(9%,7%) scale(1.15)}}
+@keyframes idxFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-18px)}}
+
+/* footer glow breathes */
+@keyframes glowPulse{from{opacity:.65;transform:translateX(-50%) scale(1)}to{opacity:1;transform:translateX(-50%) scale(1.14)}}
+
+@media (prefers-reduced-motion:reduce){
+  .orb,.ghost,.plate::before{animation:none}
+}
+
 /* marquee ribbon */
 .ribbon{overflow:hidden;padding:34px 0;position:relative;transform:rotate(-1.2deg);margin:10px -40px}
 .ribbon .track{display:flex;gap:56px;width:max-content;animation:mq 30s linear infinite;will-change:transform}
@@ -460,7 +490,8 @@ html.js .shot.on:hover img{transform:scale(1.04)}
 footer{background:var(--ink);color:#fff;padding:130px 28px 60px;text-align:center;position:relative;overflow:hidden}
 footer .f-glow{position:absolute;left:50%;bottom:-40%;width:90vw;height:90vw;max-width:900px;max-height:900px;
   transform:translateX(-50%);border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,rgba(49,56,238,.28),transparent 65%)}
+  background:radial-gradient(circle,rgba(49,56,238,.28),transparent 65%);
+  animation:glowPulse 7s ease-in-out infinite alternate}
 footer .inner{position:relative;z-index:2}
 .dots-big{display:flex;justify-content:center;gap:10px;margin-bottom:34px}
 .dots-big .dot{width:14px;height:14px;border-radius:50%;animation:bounce 2.4s ease-in-out infinite}
@@ -550,6 +581,8 @@ html:not(.js) .h-track{overflow-x:auto}
 
 <!-- ABOUT -->
 <section id="about">
+  <div class="orb" style="width:420px;height:420px;background:#ccd2ff;top:10%;right:-140px"></div>
+  <div class="orb o2" style="width:300px;height:300px;background:#e2e5ff;bottom:6%;left:-100px"></div>
   <div class="ghost"><span data-speed="-0.12">ABOUT ME ABOUT ME</span></div>
   <div class="wrap">
     <div class="sec-head rv">
@@ -621,6 +654,8 @@ html:not(.js) .h-track{overflow-x:auto}
   <div class="enter-hint">ENTER</div>
 </div>
 <div class="ch-sheet">
+<div class="orb" style="width:440px;height:440px;background:#c9cfff;top:4%;left:-140px"></div>
+<div class="orb o2" style="width:360px;height:360px;background:#e0e3ff;top:46%;right:-120px"></div>
 
 <!-- 01 content -->
 <section class="sec-c" data-theme="">
@@ -659,6 +694,12 @@ html:not(.js) .h-track{overflow-x:auto}
       </div>
     </div>
 
+    <h3 class="sub-title rv">리서치가 알려준 세 가지 사실</h3>
+    <p class="sub-desc rv">발견은 그대로 설계 기준이 됐습니다. 이후 모든 화면과 비즈니스 모델은 이 세 문장 위에 서 있습니다.</p>
+    <div class="pain-sol finding rv"><div class="box pain">장애의 정도와 부위에 따라 필요한 정보가 전부 다르다</div><div class="mid">→</div><div class="box sol">Solution 01 — 맞춤형 필터</div></div>
+    <div class="pain-sol finding rv d1"><div class="box pain">'갈 수 있는 곳'을 알아도 '가는 방법'이 막히면 소용없다</div><div class="mid">→</div><div class="box sol">Solution 02 — 이동성 통합</div></div>
+    <div class="pain-sol finding rv d2"><div class="box pain">가장 정확한 접근성 정보는 그 동네에 사는 사람에게서 나온다</div><div class="mid">→</div><div class="box sol">Solution 03 — 지역 커뮤니티</div></div>
+
     <h3 class="sub-title rv">시장 속 WillChair의 자리 찾기</h3>
     <p class="sub-desc rv">지역 특화도와 소통 방향, 두 축으로 시장을 다시 그렸습니다.</p>
     <div class="pos-map rv zoom">
@@ -679,6 +720,8 @@ html:not(.js) .h-track{overflow-x:auto}
         <p>기존 지도 서비스는 넓게 알지만 <span class="hl">'현재 위치에서 바로 필요한 정보'</span>에는 약했습니다.</p>
         <p>지역 커뮤니티 서비스는 소통은 활발하지만 이동 접근성 정보가 없었습니다.</p>
         <p>WillChair는 사용자의 <strong>자발적 참여</strong>로 채워지는 하이퍼로컬 접근성 지도로, 그 빈자리를 정확히 겨냥합니다.</p>
+        <p><strong>필수 포지셔닝</strong>은 '현재 위치에서 바로 필요한 정보', <strong>차별적 포지셔닝</strong>은 사용자가 기여하는 쌍방향 데이터 구조 —
+        이 두 축이 서비스가 지켜야 할 최소선과 이겨야 할 지점을 정의합니다.</p>
       </div>
     </div>
 
@@ -708,6 +751,8 @@ html:not(.js) .h-track{overflow-x:auto}
       <div>
         <div class="sec-num c-coral">MAIN CONCEPT</div>
         <h2 style="font-size:clamp(1.5rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-.02em">"교통약자의 동네여행을 함께하는 <span class="c-coral">평생 외출 동반자</span>"</h2>
+        <p style="margin-top:14px;color:var(--ink-soft);font-size:.95rem;max-width:640px">활성화 전략은 거주자와 방문자의 쌍방향 소통 —
+        서로의 길잡이가 되어주는 교류가 곧 서비스의 데이터가 됩니다. 솔루션 세 개와 수익 모델 세 개가 하나의 흐름으로 이어집니다.</p>
       </div>
       <span class="h-hint">자동 재생 · 스와이프로 넘겨보기</span>
     </div>
@@ -739,19 +784,25 @@ html:not(.js) .h-track{overflow-x:auto}
       <div class="h-card dark">
         <div class="idx" style="color:#aab2ff">B2C</div>
         <h4>전동휠체어 서비스</h4>
-        <p>이동 데이터를 기반으로 한 개인 대상 전동휠체어 관련 서비스.</p>
+        <p>개인 대상 전동휠체어 전문 정보·관리 서비스.</p>
+        <p><strong>Why?</strong> 이용자의 이동 패턴과 접근성 니즈를 가장 깊이 아는 서비스가,
+        전동휠체어라는 가장 큰 구매 결정도 가장 잘 도울 수 있기 때문입니다.</p>
         <div class="foot" style="color:#aab2ff">BUSINESS MODEL</div>
       </div>
       <div class="h-card dark">
         <div class="idx" style="color:#aab2ff">B2B2C</div>
         <h4>휠체어 통합 판매 스토어</h4>
-        <p>개인별 <strong>정부 수혜 정보를 연계</strong>해 복잡한 구매 과정을 하나로 정리한 스토어.</p>
+        <p>개인별 <strong>정부 수혜 정보를 연계</strong>한 휠체어 통합 스토어.</p>
+        <p><strong>Why?</strong> 지원금 제도가 흩어져 있어 구매를 포기하는 사용자가 많습니다.
+        수혜 정보 매칭부터 구매까지 한 흐름으로 정리하면 그 자체가 진입장벽 해소입니다.</p>
         <div class="foot" style="color:#aab2ff">BUSINESS MODEL</div>
       </div>
       <div class="h-card dark">
         <div class="idx" style="color:#aab2ff">B2G</div>
         <h4>장애인 콜택시 사업</h4>
-        <p>지자체 콜택시 시스템 재정비로 시작해, 축적된 운영 노하우를 기업 서비스(B2B)로 확장.</p>
+        <p>지자체 콜택시 재정비로 시작해 기업 서비스(B2B)로 확장.</p>
+        <p><strong>Why?</strong> WillChair에 쌓인 이동 수요 데이터는 지자체 배차 시스템을
+        재설계할 근거가 되고, 그 운영 노하우는 다시 기업용 서비스로 팔 수 있는 자산이 됩니다.</p>
         <div class="foot" style="color:#aab2ff">BUSINESS MODEL</div>
       </div>
     </div>
@@ -775,6 +826,8 @@ html:not(.js) .h-track{overflow-x:auto}
   <div class="enter-hint">ENTER</div>
 </div>
 <div class="ch-sheet">
+<div class="orb" style="width:440px;height:440px;background:#c9cfff;top:4%;left:-140px"></div>
+<div class="orb o2" style="width:360px;height:360px;background:#e0e3ff;top:46%;right:-120px"></div>
 
 <!-- 02 content -->
 <section class="sec-g" data-theme="th-b">
@@ -787,7 +840,12 @@ html:not(.js) .h-track{overflow-x:auto}
       경로 선택부터 '맥도날드 DT 경유지 추가', 주차 정보 탐색까지 과업별 수행 시간을 측정해 디자인을 비교했습니다.</p>
     </div>
 
-    <h3 class="sub-title rv" style="margin-top:0">주행을 세 구간으로 쪼갠 UT 설계</h3>
+    <h3 class="sub-title rv" style="margin-top:0">왜 네이버 내비게이션이었나</h3>
+    <p class="sub-desc rv">시장은 이미 TMAP과 카카오내비가 나눠 가졌고, 운전자들은 "처음 쓰던 걸 바꾸지 않는" 관성 위에 있습니다.
+    후발주자인 네이버 내비가 선택받으려면 조금 나은 개선이 아니라 <strong style="color:var(--ink)">갈아탈 이유가 되는 다른 경험</strong>이 필요하다 —
+    이 가설에서 프로젝트를 시작했습니다.</p>
+
+    <h3 class="sub-title rv">주행을 세 구간으로 쪼갠 UT 설계</h3>
     <p class="sub-desc rv">25명의 참가자에게 실제 주행 시나리오를 부여하고, 과업별 수행 시간을 측정해 개선 전후를 비교했습니다.</p>
     <div class="ut rv">
       <div class="ut-col"><div class="ut-tag">출발 전</div><ul><li>도착지 설정</li><li>경로 선택</li></ul></div>
@@ -819,6 +877,11 @@ html:not(.js) .h-track{overflow-x:auto}
         <span class="pct">24%</span>
       </div>
     </div>
+
+    <h3 class="sub-title rv">숫자 뒤의 진짜 문제</h3>
+    <p class="sub-desc rv">불만의 표현은 제각각이지만 원인은 하나로 모였습니다 — <strong style="color:var(--ink)">운전 중에 화면을 보고 눌러야 한다는 것.</strong>
+    깊은 메뉴도, 불명확한 요소도 결국 '주행 중 시각 조작'이라는 전제에서 나온 문제였습니다.
+    그래서 개선이 아니라 전제를 바꾸기로 했습니다: 조작 자체를 없앤다.</p>
 
     <h3 class="sub-title rv">불편을 원칙으로 뒤집다</h3>
     <div class="pain-sol rv"><div class="box pain">깊은 메뉴 트리</div><div class="mid">→</div><div class="box sol">최소 터치로 조작</div></div>
@@ -857,8 +920,9 @@ html:not(.js) .h-track{overflow-x:auto}
       <div class="shot"><img src="assets/nv-voice.jpg" alt="음성 내비게이션 홈 — 오늘은 어디로 갈까요?" loading="lazy"></div>
       <div class="showcase-note">
         <h4>"오늘은 어디로 갈까요?"</h4>
-        <p>내비가 먼저 묻고, 운전자는 대답만 합니다. 목적지 선택("몇 번째로 갈까요?"),
-        경유지 추가, 검색까지 전 과정이 손을 쓰지 않는 대화로 이어지도록 화면과 안내어를 함께 설계했습니다.</p>
+        <p>내비가 먼저 묻고, 운전자는 대답만 합니다. 목적지 선택("몇 번째로 갈까요?" — "2번"),
+        "이순신 검색해줘" 같은 음성 검색, 주행 중 맥도날드 DT 경유지 추가, 요금까지 보여주는 주차장 추천까지 —
+        전 과정이 손을 쓰지 않는 대화로 이어지도록 화면과 안내어를 함께 설계했습니다.</p>
       </div>
     </div>
     <div class="wide-shot rv"><img src="assets/nv-drive.jpg" alt="주행 중 화면 — 경유지 추가, 음성 검색, 주차장 추천" loading="lazy"></div>
@@ -867,10 +931,12 @@ html:not(.js) .h-track{overflow-x:auto}
 
 <!-- SCENE : 96% zoom -->
 <div class="sc-96">
+  <div class="orb" style="width:480px;height:480px;background:#3138ee;top:-10%;left:-6%"></div>
+  <div class="orb o2" style="width:380px;height:380px;background:#2028c9;bottom:-14%;right:-4%"></div>
   <div class="stick">
     <div class="n96">96<span class="u">%</span></div>
     <h4>리디자인 후 사용성 조사 만족도</h4>
-    <p>개선된 프로토타입으로 다시 진행한 사용성 조사에서 이전 대비 96%의 만족도를 얻으며,
+    <p>개선된 프로토타입으로 <b style="color:#fff">동일한 과업을 다시 측정</b>한 사용성 조사에서 이전 대비 96%의 만족도를 얻으며,
     '음성 중심 내비게이션'이라는 방향을 숫자로 검증했습니다.
     <a href="https://youtu.be/lGnDjBUGnDw" target="_blank" rel="noopener">시연 영상 보기 ↗</a></p>
   </div>
@@ -900,6 +966,8 @@ html:not(.js) .h-track{overflow-x:auto}
   <div class="enter-hint">ENTER</div>
 </div>
 <div class="ch-sheet">
+<div class="orb" style="width:440px;height:440px;background:#c9cfff;top:4%;left:-140px"></div>
+<div class="orb o2" style="width:360px;height:360px;background:#e0e3ff;top:46%;right:-120px"></div>
 
 <!-- 03 content -->
 <section class="sec-b" data-theme="th-c">
@@ -916,8 +984,9 @@ html:not(.js) .h-track{overflow-x:auto}
           <span class="pill b">플랫폼 기획</span><span class="pill b">AI 분석</span><span class="pill b">정보 시각화</span>
         </div>
         <h3>Truthmarker<br><span style="font-size:.72em;color:var(--ink-soft);font-weight:600">허위정보 원스텝 신고 플랫폼</span></h3>
-        <p>기존 신고 플랫폼은 절차가 복잡하고, 제보 결과를 확인하기 어렵고, 모인 데이터를 활용하지 못했습니다.
-        플랫폼의 내부 구조와 사용자 경험을 처음부터 다시 설계했습니다.</p>
+        <p>기존 신고 플랫폼의 문제는 셋이었습니다 — <strong>복잡한 신고 절차</strong>, 제보하고 나면 깜깜무소식인 <strong>결과 확인의 비효율</strong>,
+        쌓이고도 버려지는 <strong>데이터 활용의 부재</strong>. 플랫폼의 내부 구조와 사용자 경험을 이 세 문제에서부터 다시 설계했고,
+        저는 내부 구조와 UX 설계를 담당했습니다.</p>
         <div class="shot" style="margin-top:20px"><img src="assets/tm-app.jpg" alt="Truthmarker 홈과 원터치 하이라이터 신고 화면" loading="lazy"></div>
         <ul>
           <li>사진 위 허위 요소를 <strong>하이라이터로 칠하면 신고 끝</strong> — 원스텝 신고 구조</li>
@@ -939,6 +1008,7 @@ html:not(.js) .h-track{overflow-x:auto}
           <li>AI 작곡·작사로 동요 <strong>'우리의 자랑, 창덕궁'</strong> 제작</li>
           <li>가사 속 장소 정보로 참가자의 <strong>문화유산 이해도 향상</strong></li>
           <li>'문화유산의 일상 속 향유'라는 주제를 체험형 프로그램으로 구현</li>
+          <li>기획력·교육적 효과·문화유산 가치 확산 기여를 인정받아 <strong>국가유산진흥원장상 수상</strong></li>
         </ul>
         <div class="prize">
           <span class="prize-chip">🏛️ 국가유산청 세계유산지킴이 · 국가유산진흥원장상</span><br>
