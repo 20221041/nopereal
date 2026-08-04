@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>송유나 — Service Design Portfolio</title>
+<meta name="description" content="새로운 시작을 함께하고 싶은 서비스 디자이너 송유나의 포트폴리오">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf6f0;
+  --ink:#2a2622;
+  --ink-soft:#6f665c;
+  --ink-faint:#9a8f82;
+  --accent:#c96f4a;
+  --hair:#e6ddd2;
+  --max:1040px;
+  --e:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;
+  background:var(--paper);color:var(--ink);
+  line-height:1.75;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  font-size:1rem;
+}
+/* fine grain */
+body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:var(--accent);color:#fff}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(24px,5vw,48px)}
+
+/* ---- type ---- */
+.label{font-size:.78rem;font-weight:600;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;
+  display:inline-block;position:relative;padding-bottom:10px}
+.label::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;transition:transform 1.2s .3s var(--e)}
+.rv.on .label::after,.label.on::after{transform:scaleX(1)}
+.big{font-weight:700;letter-spacing:-.03em;line-height:1.22;font-size:clamp(2.5rem,6.4vw,5.5rem)}
+.big em{font-style:normal;color:var(--accent)}
+.quiet{color:var(--ink-soft);font-size:.98rem;max-width:34em}
+.serif{font-family:"Noto Serif KR",serif;font-weight:400;font-style:italic}
+.hair{border:0;border-top:1px solid var(--hair)}
+.dot{color:var(--accent)}
+
+/* reveal */
+html.js .rv{opacity:0;transform:translateY(28px);transition:opacity 1.2s var(--e),transform 1.2s var(--e)}
+html.js .rv.on{opacity:1;transform:none}
+html.js .rv.d1{transition-delay:.12s}html.js .rv.d2{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}
+  .label::after{transform:scaleX(1)!important;transition:none}}
+
+/* ---- nav ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:baseline;
+  padding:22px clamp(24px,5vw,48px);background:linear-gradient(var(--paper) 55%,rgba(250,246,240,0));
+  font-size:.8rem}
+nav .logo{font-weight:700;letter-spacing:.12em;text-decoration:none}
+nav ul{display:flex;gap:22px;list-style:none}
+nav a{text-decoration:none;font-weight:500;color:var(--ink-soft);transition:color .3s}
+nav a:hover{color:var(--accent)}
+@media (max-width:560px){nav ul li:nth-child(2){display:none}}
+
+/* ---- hero ---- */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding-top:140px;padding-bottom:100px}
+.hero h1{font-weight:700;letter-spacing:-.035em;line-height:1.14;font-size:clamp(2.7rem,7.2vw,6rem)}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .who{margin-top:48px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;color:var(--ink-soft);font-size:.95rem}
+.hero .who b{color:var(--ink);font-weight:700;font-size:1.05rem;letter-spacing:.02em}
+.hero .down{margin-top:auto;padding-top:90px;font-size:.75rem;letter-spacing:.3em;color:var(--ink-faint)}
+
+/* ---- movements spacing ---- */
+.movement{padding:clamp(150px,22vh,260px) 0}
+.rule{max-width:var(--max);margin:0 auto;padding:0 clamp(24px,5vw,48px)}
+.rule hr{border:0;border-top:1px solid var(--hair)}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr;gap:64px}
+.about-facts{margin-top:88px;max-width:620px;margin-left:auto}
+.about-facts dl{border-top:1px solid var(--hair)}
+.about-facts .row{display:grid;grid-template-columns:96px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--hair);font-size:.92rem}
+.about-facts dt{color:var(--ink-faint);font-weight:600;letter-spacing:.06em;font-size:.8rem;padding-top:2px}
+.about-facts dd{color:var(--ink-soft)}
+.about-facts dd b{color:var(--ink);font-weight:600}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:150px}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr);gap:56px 24px}}
+.stat .n{font-weight:700;letter-spacing:-.02em;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1}
+.stat .n span{font-size:.45em;font-weight:600;color:var(--accent);margin-left:2px}
+.stat .l{margin-top:12px;font-size:.82rem;color:var(--ink-soft)}
+
+/* project title page */
+.title-page{min-height:88svh;display:flex;flex-direction:column;justify-content:center}
+.title-page .num{font-size:.85rem;font-weight:600;letter-spacing:.3em;color:var(--accent);margin-bottom:34px;
+  display:flex;align-items:center;gap:16px}
+.title-page .num::after{content:"";width:56px;height:1px;background:var(--hair)}
+.title-page h2{font-weight:700;letter-spacing:-.03em;line-height:1.2;font-size:clamp(2.5rem,6.6vw,5.6rem)}
+.title-page h2 em{font-style:normal;color:var(--accent)}
+.title-page .one-line{margin-top:36px;color:var(--ink-soft);font-size:1rem;max-width:36em}
+
+/* content rows */
+.row-idea{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:clamp(32px,6vw,80px);
+  align-items:start;padding:clamp(90px,14vh,150px) 0}
+@media (max-width:760px){.row-idea{grid-template-columns:1fr;gap:28px;padding:80px 0}}
+.row-idea h3{font-weight:700;letter-spacing:-.02em;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.45}
+.row-idea .k{font-size:.75rem;font-weight:600;letter-spacing:.24em;color:var(--accent);margin-bottom:16px;display:block}
+.row-idea p{color:var(--ink-soft);font-size:.96rem}
+.row-idea p+p{margin-top:16px}
+.row-idea p b{color:var(--ink);font-weight:600}
+.row-idea ul{list-style:none;margin-top:20px}
+.row-idea li{color:var(--ink-soft);font-size:.94rem;padding:10px 0 10px 26px;position:relative;border-top:1px solid var(--hair)}
+.row-idea li:last-child{border-bottom:1px solid var(--hair)}
+.row-idea li::before{content:"—";position:absolute;left:0;color:var(--accent)}
+.row-idea li b{color:var(--ink);font-weight:600}
+
+/* circled numbers list */
+.steps{margin-top:8px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:22px;padding:26px 0;border-top:1px solid var(--hair);align-items:start}
+.step:last-child{border-bottom:1px solid var(--hair)}
+.step .c{width:34px;height:34px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:600;color:var(--accent);margin-top:2px}
+.step h4{font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+.step p{margin-top:6px;color:var(--ink-soft);font-size:.93rem;max-width:44em}
+.step p b{color:var(--ink);font-weight:600}
+
+/* pull quote */
+.pull{padding:clamp(90px,14vh,150px) 0;max-width:760px}
+.pull.right{margin-left:auto}
+.pull p{font-family:"Noto Serif KR",serif;font-style:italic;font-weight:400;
+  font-size:clamp(1.3rem,2.8vw,1.9rem);line-height:1.7;color:var(--ink)}
+.pull .src{margin-top:22px;font-size:.8rem;letter-spacing:.16em;color:var(--ink-faint)}
+
+/* impact moment */
+.impact{min-height:92svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+.impact .huge{font-weight:700;letter-spacing:-.04em;line-height:1.05;font-size:clamp(4rem,15vw,12rem)}
+.impact .huge span{color:var(--accent)}
+.impact .cap{margin-top:30px;color:var(--ink-soft);font-size:.98rem;max-width:34em}
+.impact .cap a{color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent)}
+
+/* images */
+.fig{padding:clamp(70px,10vh,120px) 0}
+.fig img{width:100%;border-radius:8px;border:1px solid var(--hair)}
+html.js .fig img{opacity:0;transform:translateY(20px);transition:opacity 1.4s var(--e),transform 1.4s var(--e)}
+html.js .fig.on img{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html.js .fig img{opacity:1;transform:none;transition:none}}
+.fig figcaption{margin-top:16px;font-size:.8rem;color:var(--ink-faint);letter-spacing:.04em}
+.fig.narrow{max-width:640px}
+.fig.narrow.right{margin-left:auto}
+.fig.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:start}
+@media (max-width:700px){.fig.pair{grid-template-columns:1fr}}
+
+/* patent meta */
+.meta{margin-top:40px;font-size:.8rem;color:var(--ink-faint);line-height:2}
+
+/* footer */
+footer{padding:clamp(160px,26vh,300px) 0 80px;text-align:left}
+footer h2{font-weight:700;letter-spacing:-.03em;line-height:1.2;font-size:clamp(2.5rem,6.6vw,5.4rem)}
+footer h2 em{font-style:normal;color:var(--accent)}
+footer .msg{margin-top:34px;color:var(--ink-soft);font-size:1rem}
+.contact{margin-top:60px;display:flex;flex-direction:column;gap:0;max-width:520px}
+.contact a{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:20px 0;
+  border-top:1px solid var(--hair);text-decoration:none;font-weight:600;font-size:1rem;transition:color .3s}
+.contact a:last-of-type{border-bottom:1px solid var(--hair)}
+.contact a span{font-size:.75rem;letter-spacing:.2em;color:var(--ink-faint);font-weight:500}
+.contact a:hover{color:var(--accent)}
+footer .fin{margin-top:100px;font-size:.75rem;letter-spacing:.14em;color:var(--ink-faint)}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<nav>
+  <a class="logo" href="#top">SONG YUNA</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero wrap" id="top">
+  <p class="label rv on" style="margin-bottom:44px">2025 Service Design Portfolio</p>
+  <h1 class="rv on d1">사람의 마음을 읽고,<br><em>경계를 넘어</em> 설계합니다.</h1>
+  <div class="who rv on d2">
+    <b>송유나</b>
+    <span>Service Design <span class="dot">·</span> UX Research <span class="dot">·</span> AI × Design</span>
+  </div>
+  <p class="down">SCROLL</p>
+</header>
+
+<div class="rule"><hr></div>
+
+<!-- ABOUT -->
+<section class="movement" id="about">
+  <div class="wrap">
+    <p class="label rv">About</p>
+    <div style="height:56px"></div>
+    <h2 class="big rv">직접 만나고, 직접 겪어보고,<br>직접 <em>만듭니다.</em></h2>
+    <div class="row-idea" style="padding-bottom:0">
+      <div></div>
+      <div class="rv">
+        <p class="quiet">휠체어에 앉아 도시를 건너고, 운전자 130명의 목소리를 모으고,
+        AI로 만든 동요를 궁궐에서 불렀습니다. 리서치로 발견한 진짜 문제를
+        기술과 디자인으로 풀어내는 것 — <b style="color:var(--ink)">경계를 넘는 행동력</b>이 저의 방법론입니다.</p>
+      </div>
+    </div>
+    <div class="about-facts rv">
+      <dl>
+        <div class="row"><dt>학력</dt><dd>성신여자대학교 <b>서비스디자인공학</b> 주전공 · <b>AI</b> 복수전공</dd></div>
+        <div class="row"><dt>수상</dt><dd>KAIST 허위정보 대응 공모전 우수상 <span class="dot">·</span> 국가유산진흥원장상</dd></div>
+        <div class="row"><dt>스킬</dt><dd><b>Figma</b> · Illustrator · Premiere Pro · PowerPoint</dd></div>
+        <div class="row"><dt>어학</dt><dd>OPIC <b>IH</b></dd></div>
+      </dl>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><div class="n">130<span>+명</span></div><div class="l">리서치 참여자</div></div>
+      <div class="stat rv d1"><div class="n">96<span>%</span></div><div class="l">리디자인 후 만족도</div></div>
+      <div class="stat rv d2"><div class="n">1<span>건</span></div><div class="l">특허 출원 · 발명자 등재</div></div>
+      <div class="stat rv"><div class="n">2<span>회</span></div><div class="l">전국 단위 수상</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="rule" id="works"><hr></div>
+
+<!-- ===== PROJECT 01 ===== -->
+<section class="title-page wrap">
+  <p class="num rv on">Project 01 — WillChair</p>
+  <h2 class="rv">경계를 넘어,<br>소비자를 <em>공감하다</em></h2>
+  <p class="one-line rv d1">교통약자 베리어프리 지도 앱 WillChair — 커뮤니티 서비스 기획과 비즈니스 모델 · 산학협력 프로젝트</p>
+</section>
+
+<div class="wrap">
+
+  <div class="row-idea">
+    <div class="rv">
+      <span class="k">Research</span>
+      <h3>책상이 아닌,<br>현장에서 시작한 리서치</h3>
+    </div>
+    <div class="rv d1">
+      <div class="steps">
+        <div class="step"><div class="c">1</div><div><h4>교통약자를 직접 만나다</h4>
+          <p>모집 포스터를 직접 만들어 인터뷰이를 모으고, 상대가 편한 방식으로 진행했습니다.
+          장애의 정도와 부위에 따라 필요한 정보가 다르다 — 맞춤형 필터의 근거가 됐습니다.</p></div></div>
+        <div class="step"><div class="c">2</div><div><h4>창업자를 만나다</h4>
+          <p>WillChair 조준섭 대표에게 내부 데이터와 사업 방향을 직접 들었습니다.
+          <b>기업의 현실적 제약 위에서</b> 기획해야 실행 가능한 제안이 되기 때문입니다.</p></div></div>
+        <div class="step"><div class="c">3</div><div><h4>콜드메일로 섭외하다</h4>
+          <p>휠체어 일상을 기록해온 인플루언서에게 직접 연락해 인터뷰를 성사시켰습니다.
+          수년간 축적된 이동 경험담은 어떤 데스크 리서치보다 밀도가 높았습니다.</p></div></div>
+        <div class="step"><div class="c">4</div><div><h4>휠체어에 앉아 도시를 건너다</h4>
+          <p>직접 휠체어를 타고 하루를 이동했습니다. 턱 하나, 경사 하나가 경로 전체를 바꿉니다 —
+          <b>몸으로 경험하고 나서야 보이는 문제</b>였습니다.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull right rv">
+    <p>"가장 정확한 접근성 정보는,<br>그 동네에 사는 사람에게서 나온다."</p>
+    <p class="src">리서치가 알려준 사실</p>
+  </div>
+
+  <div class="row-idea">
+    <div class="rv">
+      <span class="k">Concept</span>
+      <h3>교통약자의 동네여행을<br>함께하는 평생 외출 동반자</h3>
+    </div>
+    <div class="rv d1">
+      <p>하이퍼로컬 × 쌍방향 — 기존 지도는 넓게 알지만 '지금 여기'에 약했고,
+      지역 커뮤니티는 소통은 활발하지만 접근성 정보가 없었습니다.
+      WillChair는 사용자의 <b>자발적 참여로 채워지는 접근성 지도</b>로 그 빈자리를 겨냥합니다.</p>
+      <ul>
+        <li><b>맞춤형 필터</b> — 경사로 · 엘리베이터 · 전용주차장, '내가 갈 수 있는 곳'만</li>
+        <li><b>이동성 통합</b> — 대중교통 31분 vs 콜택시 13분, 비교에서 호출까지 한 화면</li>
+        <li><b>지역 커뮤니티</b> — 소통이 데이터가 되고, 데이터가 다시 서비스가 되는 구조</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure class="fig pair rv">
+    <img src="assets/wc-sol1.jpg" alt="WillChair 맞춤형 필터 화면" loading="lazy">
+    <img src="assets/wc-sol2.jpg" alt="WillChair 이동성·접근성 통합 화면" loading="lazy">
+  </figure>
+  <figure class="fig narrow right rv" style="padding-top:0">
+    <img src="assets/wc-sol3.jpg" alt="WillChair 지역 커뮤니티 화면" loading="lazy">
+    <figcaption>맞춤형 필터 · 이동성 통합 · 지역 커뮤니티</figcaption>
+  </figure>
+
+  <div class="row-idea">
+    <div class="rv">
+      <span class="k">Business</span>
+      <h3>커뮤니티가 굴러가게 만드는<br>비즈니스 모델</h3>
+    </div>
+    <div class="rv d1">
+      <p>커뮤니티는 목적이 아니라 구조입니다. 교류가 쌓이면 실시간 접근성 데이터가 되고,
+      그 데이터가 수익의 토대가 됩니다.</p>
+      <ul>
+        <li><b>B2C</b> — 전동휠체어 전문 정보·관리 서비스</li>
+        <li><b>B2B2C</b> — 정부 수혜 정보를 연계한 휠체어 통합 스토어</li>
+        <li><b>B2G</b> — 이동 수요 데이터로 지자체 콜택시 재정비, 기업 서비스로 확장</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="impact">
+  <p class="label rv on" style="margin-bottom:40px">One Day in a Wheelchair</p>
+  <div class="huge rv">턱 <span>하나</span>가<br>경로를 바꾼다</div>
+  <p class="cap rv d1">경쟁사 분석도, SWOT도 — 이 하루의 경험 위에서 진행했습니다.</p>
+</div>
+
+<div class="rule"><hr></div>
+
+<!-- ===== PROJECT 02 ===== -->
+<section class="title-page wrap">
+  <p class="num rv on">Project 02 — 네이버 내비게이션 리디자인</p>
+  <h2 class="rv">집요하게 파고들어,<br>경험을 <em>혁신하다</em></h2>
+  <p class="one-line rv d1">130여 명의 목소리로 다시 설계한 주행 경험 — UT 25명 · 설문 106명 · HCI 실습 프로젝트</p>
+</section>
+
+<div class="wrap">
+
+  <div class="row-idea">
+    <div class="rv">
+      <span class="k">Hypothesis</span>
+      <h3>후발주자에게 필요한 건<br>개선이 아니라 갈아탈 이유</h3>
+    </div>
+    <div class="rv d1">
+      <p>시장은 이미 TMAP과 카카오내비가 나눠 가졌고, 운전자들은
+      "처음 쓰던 걸 바꾸지 않는" 관성 위에 있습니다.
+      네이버 내비가 선택받으려면 <b>완전히 다른 경험</b>이 필요하다 — 이 가설에서 시작했습니다.</p>
+    </div>
+  </div>
+
+  <div class="row-idea">
+    <div class="rv">
+      <span class="k">Research — 130+명</span>
+      <h3>주행의 순간을<br>쪼개서 테스트하다</h3>
+    </div>
+    <div class="rv d1">
+      <p>출발 전 <span class="dot">·</span> 주행 중 <span class="dot">·</span> 도착 2분 전.
+      실제 주행 시나리오를 세 구간으로 나누고, <b>UT 25명</b>에게 경로 선택부터
+      '맥도날드 DT 경유지 추가', 주차 정보 탐색까지 과업별 수행 시간을 측정했습니다.</p>
+      <p><b>설문 106명</b> — 40%는 "처음 쓰던 내비를 바꾸지 않는다",
+      43.8%는 "화면이 불편해서 안 쓴다"고 답했습니다.
+      불만의 표현은 제각각이지만 원인은 하나였습니다 —
+      <b>운전 중에 화면을 보고 눌러야 한다는 것.</b></p>
+    </div>
+  </div>
+
+  <div class="pull rv">
+    <p>"그래서 개선이 아니라 전제를 바꾸기로 했습니다.<br>조작 자체를 없앤다."</p>
+    <p class="src">설문 106명 · UT 25명이 가리킨 방향</p>
+  </div>
+
+  <div class="row-idea">
+    <div class="rv">
+      <span class="k">Design</span>
+      <h3>운전 중 조작을 없애는<br>완전 음성 내비게이션</h3>
+    </div>
+    <div class="rv d1">
+      <ul style="margin-top:0">
+        <li><b>내비가 먼저 말을 겁니다</b> — "오늘은 어디로 갈까요?" 명령어를 외울 필요 없는 제시형 안내어</li>
+        <li><b>모든 기능, 대화 3턴 이내</b> — 경유지 추가부터 주차장 추천까지 플로우 압축</li>
+        <li><b>네이버 생태계 연결</b> — 검색·예약·이동이 하나의 흐름으로</li>
+        <li><b>즐거워지는 장치</b> — 셀럽 음성과 캐릭터 커스터마이징</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure class="fig narrow rv">
+    <img src="assets/nv-voice.jpg" alt="음성 내비게이션 홈 — 오늘은 어디로 갈까요?" loading="lazy">
+    <figcaption>"오늘은 어디로 갈까요?" — 내비가 먼저 묻고, 운전자는 대답만 합니다</figcaption>
+  </figure>
+  <figure class="fig rv" style="padding-top:0">
+    <img src="assets/nv-drive.jpg" alt="주행 중 화면 — 경유지 추가, 음성 검색, 주차장 추천" loading="lazy">
+    <figcaption>주행 중 — 경유지 추가 · 음성 검색 · 주차장 추천, 전 과정이 손을 쓰지 않는 대화로</figcaption>
+  </figure>
+</div>
+
+<div class="impact">
+  <p class="label rv on" style="margin-bottom:40px">After Redesign</p>
+  <div class="huge rv"><span>96</span>%</div>
+  <p class="cap rv d1">동일한 과업을 다시 측정한 사용성 조사 만족도 —
+  '음성 중심'이라는 방향을 숫자로 검증했습니다.<br><br>
+  <a href="https://youtu.be/lGnDjBUGnDw" target="_blank" rel="noopener">시연 영상 보기 ↗</a></p>
+</div>
+
+<div class="rule"><hr></div>
+
+<!-- ===== PROJECT 03 ===== -->
+<section class="title-page wrap">
+  <p class="num rv on">Project 03 — Capability</p>
+  <h2 class="rv">기술의 속도에 맞춰,<br>아이디어를 <em>실현하다</em></h2>
+  <p class="one-line rv d1">AI와 데이터를 도구 삼아 기획을 결과물로 — 두 번의 전국 단위 수상과 한 건의 특허 출원</p>
+</section>
+
+<div class="wrap">
+
+  <div class="row-idea">
+    <div class="rv">
+      <span class="k">Truthmarker</span>
+      <h3>허위정보<br>원스텝 신고 플랫폼</h3>
+      <p style="margin-top:18px;font-size:.85rem;color:var(--ink-faint)">KAIST 허위정보 대응 공모전 · 플랫폼 개발 부문 <b style="color:var(--accent)">우수상</b></p>
+    </div>
+    <div class="rv d1">
+      <p>복잡한 신고 절차, 깜깜무소식인 결과 확인, 버려지는 데이터 —
+      기존 플랫폼의 세 가지 문제에서 내부 구조와 UX를 다시 설계했습니다.</p>
+      <ul>
+        <li>사진 위 허위 요소를 <b>하이라이터로 칠하면 신고 끝</b></li>
+        <li>축적된 신고 데이터로 <b>실시간 허위정보 위험도</b> 제공</li>
+        <li>레벨·게이지로 배우는 허위정보 유형 학습 홈</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure class="fig narrow rv" style="padding-top:0">
+    <img src="assets/tm-app.jpg" alt="Truthmarker 홈과 원터치 하이라이터 신고 화면" loading="lazy">
+  </figure>
+
+  <div class="row-idea">
+    <div class="rv">
+      <span class="k">우리의 자랑, 창덕궁</span>
+      <h3>생성형 AI로 만든<br>문화유산 동요</h3>
+      <p style="margin-top:18px;font-size:.85rem;color:var(--ink-faint)">국가유산청 세계유산지킴이 · <b style="color:var(--accent)">국가유산진흥원장상</b></p>
+    </div>
+    <div class="rv d1">
+      <p>창덕궁 고궁 청소년 문화학교를 직접 기획하고 주최했습니다.
+      생성형 AI로 작곡·작사한 동요에 창덕궁 곳곳의 이야기를 가사로 녹여,
+      아이들이 노래와 율동으로 문화유산을 배우게 했습니다.</p>
+      <ul>
+        <li>가사 속 장소 정보로 <b>문화유산 이해도 향상</b></li>
+        <li>'일상 속 향유'라는 주제를 체험형 프로그램으로 구현</li>
+        <li><a href="https://youtu.be/w0uiGq4I15I" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;text-decoration:none">리릭 비디오 보기 ↗</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <figure class="fig narrow right rv" style="padding-top:0">
+    <img src="assets/cd-video.jpg" alt="우리의 자랑 창덕궁 — 행사 영상과 리릭 비디오" loading="lazy">
+  </figure>
+
+  <div class="pull rv">
+    <p>"리서치에서 출발한 문제의식이,<br>하나의 발명으로 완성되었습니다."</p>
+    <p class="src">WillChair → 모듈형 돌봄 로봇</p>
+  </div>
+
+  <div class="row-idea" style="padding-top:0">
+    <div class="rv">
+      <span class="k">Patent</span>
+      <h3>모듈형 돌봄 로봇<br><span style="font-size:.7em;color:var(--ink-soft);font-weight:500">Modular Care Robots</span></h3>
+      <p style="margin-top:18px;font-size:.85rem;color:var(--ink-faint)">특허 출원 · <b style="color:var(--accent)">공동 발명자 등재</b></p>
+    </div>
+    <div class="rv d1">
+      <p>혼자 지내는 노년층에게 정서적 고립과 이동의 어려움은 함께 찾아옵니다.
+      평소에는 감정을 읽고 반응하는 <b>AI 헤드</b>가 곁에서 교감하고,
+      외출할 때는 자율주행 바디와 합체해 <b>의자이자 이동수단</b>이 됩니다 —
+      정서적 돌봄과 이동 보조를 하나의 경험으로 연결한 발명입니다.</p>
+      <ul>
+        <li>표정과 행동을 읽어 <b>감정에 반응하는 교감</b></li>
+        <li>접이식 등받이와 발판으로 <b>혼자서도 타고 내리는 외출</b></li>
+        <li>비전 카메라 · 초음파 센서 · IMU의 안전 설계</li>
+      </ul>
+      <p class="meta">출원번호 10-2025-0204466 · 출원일 2025.12.19<br>
+      출원인 성신여자대학교 연구 산학협력단 · 산업통상자원부 R&amp;D 과제</p>
+    </div>
+  </div>
+</div>
+
+<div class="rule"><hr></div>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <div class="wrap">
+    <p class="label rv">Contact</p>
+    <div style="height:56px"></div>
+    <h2 class="rv">새로운 시작,<br><em>함께</em>하시겠어요?</h2>
+    <p class="msg rv d1">공감으로 시작해 실행으로 끝내는 디자이너, 송유나입니다.</p>
+    <div class="contact rv d2">
+      <a href="mailto:20221041@sungshin.ac.kr">20221041@sungshin.ac.kr<span>Email</span></a>
+      <a href="tel:01038998592">010 . 3899 . 8592<span>Phone</span></a>
+    </div>
+    <p class="fin">© 2025 SONG YUNA <span class="dot">·</span> SERVICE DESIGN PORTFOLIO</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting)e.target.classList.add('on');
+});},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.fig').forEach(function(el){io.observe(el)});
+if(reduce)document.querySelectorAll('.rv,.fig').forEach(function(el){el.classList.add('on')});
+})();
+</script>
+</body>
+</html>
