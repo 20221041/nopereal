@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>송유나 — Service Design Portfolio</title>
+<meta name="description" content="서비스 디자이너 송유나 — 퓨어 미니멀 포트폴리오">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#fcfbf9;
+  --ink:#1d1d1f;
+  --soft:#86868b;
+  --hair:#eceae6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  background:var(--bg);color:var(--ink);
+  line-height:1.7;-webkit-font-smoothing:antialiased;
+  word-break:keep-all;
+  overflow-x:hidden;
+}
+::selection{background:var(--ink);color:var(--bg)}
+a{color:var(--ink);text-decoration:none}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;
+  background:rgba(252,251,249,.72);
+  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.04)}
+nav .logo{font-weight:700;font-size:.85rem;letter-spacing:.02em}
+nav ul{display:flex;gap:26px;list-style:none}
+nav ul a{font-size:.8rem;color:var(--soft);transition:color .25s}
+nav ul a:hover{color:var(--ink)}
+@media (max-width:640px){
+  nav{padding:14px 20px}
+  nav ul{gap:16px}
+  nav ul li:nth-child(2){display:none}
+}
+
+/* slide system */
+.slide{min-height:100svh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:120px 24px}
+.slide.short{min-height:72svh}
+.eyebrow{font-size:.8rem;font-weight:600;letter-spacing:.18em;color:var(--soft);margin-bottom:28px;text-transform:uppercase}
+h1,.statement{
+  font-size:clamp(2.8rem,7.5vw,7rem);
+  font-weight:700;letter-spacing:-.03em;line-height:1.12;
+  max-width:20ch}
+h2.statement-m{
+  font-size:clamp(2rem,5vw,4.2rem);
+  font-weight:700;letter-spacing:-.03em;line-height:1.18;
+  max-width:22ch}
+.quiet{font-size:.95rem;color:var(--soft);max-width:44ch;margin-top:30px}
+.quiet strong{color:var(--ink);font-weight:600}
+.proj-title{font-size:clamp(2.4rem,6vw,5.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.14;max-width:18ch}
+.proj-no{font-size:.8rem;font-weight:600;letter-spacing:.24em;color:var(--soft);margin-bottom:26px}
+
+/* huge number */
+.bignum{font-size:clamp(5rem,16vw,13rem);font-weight:700;letter-spacing:-.04em;line-height:1;
+  font-variant-numeric:tabular-nums}
+.bignum .u{font-size:.32em;font-weight:600;margin-left:.06em}
+.cap{margin-top:18px;font-size:.9rem;color:var(--soft)}
+
+/* stat row (about) */
+.statrow{display:flex;gap:clamp(40px,8vw,110px);flex-wrap:wrap;justify-content:center;margin-top:70px}
+.statrow .s .n{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.statrow .s .n .u{font-size:.42em;font-weight:600}
+.statrow .s .l{margin-top:10px;font-size:.82rem;color:var(--soft)}
+
+/* image */
+.slide>div{width:100%;display:flex;flex-direction:column;align-items:center}
+.pic{margin:60px auto 0;width:min(880px,100%)}
+.pic img{width:100%;display:block;border-radius:20px;
+  box-shadow:0 30px 80px rgba(0,0,0,.12)}
+.pic.narrow{width:min(560px,100%)}
+
+/* hairline list */
+.list{width:min(560px,100%);margin-top:60px;text-align:left}
+.list .row{padding:20px 4px;border-top:1px solid var(--hair);
+  display:flex;justify-content:space-between;gap:24px;align-items:baseline}
+.list .row:last-child{border-bottom:1px solid var(--hair)}
+.list .k{font-size:.82rem;font-weight:600;white-space:nowrap}
+.list .v{font-size:.88rem;color:var(--soft);text-align:right}
+.list .v strong{color:var(--ink);font-weight:600}
+
+/* links */
+.link-u{border-bottom:1px solid var(--ink);padding-bottom:1px;transition:opacity .25s}
+.link-u:hover{opacity:.55}
+
+/* divider slide */
+.gap{height:14svh}
+
+/* footer */
+footer{padding:0 24px 60px;text-align:center}
+footer .fin{margin-top:100px;font-size:.75rem;color:var(--soft);letter-spacing:.06em}
+.contact-links{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:44px;font-size:.95rem;font-weight:600}
+
+/* reveal motion */
+html.js .rv{opacity:0;transform:scale(.98);transition:opacity 1.2s cubic-bezier(.16,1,.3,1),transform 1.2s cubic-bezier(.16,1,.3,1)}
+html.js .rv.on{opacity:1;transform:scale(1)}
+@media (prefers-reduced-motion:reduce){
+  html.js .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<nav>
+  <span class="logo">송유나</span>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#capability">Capability</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="slide">
+  <div class="rv">
+    <div class="eyebrow">Service Design Portfolio</div>
+    <h1>사람의 마음을 읽고,<br>경계를 넘어 설계합니다.</h1>
+    <p class="quiet">서비스 디자이너 송유나 — 성신여자대학교 서비스디자인공학 주전공, AI 복수전공.</p>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">직접 만나고, 직접 겪어보고,<br>직접 만듭니다.</h2>
+    <p class="quiet">휠체어에 앉아 도시를 건너고, 운전자 130명의 목소리를 모으고,
+    AI로 만든 동요를 궁궐에서 불렀습니다.</p>
+    <div class="statrow">
+      <div class="s"><div class="n"><span data-count="130">130</span><span class="u">+</span></div><div class="l">리서치 참여자</div></div>
+      <div class="s"><div class="n"><span data-count="96">96</span><span class="u">%</span></div><div class="l">리디자인 후 만족도</div></div>
+      <div class="s"><div class="n"><span data-count="1">1</span><span class="u">건</span></div><div class="l">특허 출원 · 발명자</div></div>
+      <div class="s"><div class="n"><span data-count="2">2</span><span class="u">회</span></div><div class="l">전국 단위 수상</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="slide short" id="about">
+  <div class="rv">
+    <div class="eyebrow">About</div>
+    <h2 class="statement-m">공감에서 출발해,<br>실행으로 증명합니다.</h2>
+    <div class="list">
+      <div class="row"><span class="k">학력</span><span class="v">성신여대 <strong>서비스디자인공학</strong> · <strong>AI</strong> 복수전공</span></div>
+      <div class="row"><span class="k">수상</span><span class="v">KAIST 공모전 우수상 · 국가유산진흥원장상</span></div>
+      <div class="row"><span class="k">스킬</span><span class="v"><strong>Figma</strong> · Illustrator · Premiere Pro</span></div>
+      <div class="row"><span class="k">어학</span><span class="v">OPIC <strong>IH</strong></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="gap" id="work"></div>
+
+<!-- PROJECT 01 -->
+<section class="slide">
+  <div class="rv">
+    <div class="proj-no">Project 01 — WillChair</div>
+    <h2 class="proj-title">경계를 넘어,<br>소비자를 공감하다.</h2>
+    <p class="quiet">교통약자 베리어프리 지도 앱 · 커뮤니티 서비스 기획 &amp; 비즈니스 모델 · 산학협력 프로젝트</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">휠체어에 앉아<br>하루를 이동해봤습니다.</h2>
+    <p class="quiet">인터뷰이를 직접 모집하고, 창업자를 만나고, 콜드메일로 인플루언서를 섭외했습니다.
+    턱 하나가 경로 전체를 바꾼다는 건 몸으로 겪고서야 보였습니다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">나에게 맞춘<br>접근성 정보.</h2>
+    <p class="quiet">장애의 정도와 부위에 따라 필요한 정보는 다릅니다.
+    경사로 · 엘리베이터 · 전용주차장, <strong>맞춤형 필터</strong>로 '갈 수 있는 곳'을 바로 보여줍니다.</p>
+    <div class="pic"><img src="assets/wc-sol1.jpg" alt="WillChair 맞춤형 필터 화면" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">이동성과 접근성을<br>한 화면에.</h2>
+    <p class="quiet">대중교통 31분 vs 콜택시 13분 — 비교하고, 그 자리에서 바로 호출까지.</p>
+    <div class="pic"><img src="assets/wc-sol2.jpg" alt="WillChair 이동성·접근성 통합 화면" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">소통이 데이터가 되는<br>지역 커뮤니티.</h2>
+    <p class="quiet">가장 정확한 접근성 정보는 그 동네 사람에게서 나옵니다.
+    교류가 데이터가 되고, 데이터가 다시 서비스가 되는 구조입니다.</p>
+    <div class="pic"><img src="assets/wc-sol3.jpg" alt="WillChair 지역 커뮤니티 화면" loading="lazy"></div>
+  </div>
+</section>
+
+<div class="gap"></div>
+
+<!-- PROJECT 02 -->
+<section class="slide">
+  <div class="rv">
+    <div class="proj-no">Project 02 — 네이버 내비게이션 리디자인</div>
+    <h2 class="proj-title">집요하게 파고들어,<br>경험을 혁신하다.</h2>
+    <p class="quiet">130여 명의 목소리로 다시 설계한 주행 경험 · UT 25명 · 설문 106명</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">문제는 하나였습니다.<br>운전 중에 화면을 봐야 한다는 것.</h2>
+    <p class="quiet">UT 25명, 설문 106명. 깊은 메뉴도, 불명확한 요소도
+    결국 '주행 중 시각 조작'이라는 전제에서 나온 문제였습니다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">그래서 조작 자체를<br>없앴습니다.</h2>
+    <p class="quiet">"오늘은 어디로 갈까요?" — 내비가 먼저 묻고, 운전자는 대답만 합니다.
+    모든 기능이 <strong>대화 3턴 안에</strong> 끝납니다.</p>
+    <div class="pic"><img src="assets/nv-voice.jpg" alt="음성 내비게이션 홈 — 오늘은 어디로 갈까요?" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <div class="pic" style="margin-top:0"><img src="assets/nv-drive.jpg" alt="주행 중 화면 — 경유지 추가, 음성 검색, 주차장 추천" loading="lazy"></div>
+    <p class="quiet">경유지 추가, 음성 검색, 주차장 추천까지 — 손을 쓰지 않는 대화로 이어집니다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <div class="bignum"><span data-count="96">96</span><span class="u">%</span></div>
+    <p class="cap">리디자인 후 사용성 조사 만족도</p>
+    <p class="quiet">동일한 과업을 다시 측정해 '음성 중심 내비게이션'이라는 방향을 숫자로 검증했습니다.<br><br>
+    <a class="link-u" href="https://youtu.be/lGnDjBUGnDw" target="_blank" rel="noopener">시연 영상 보기</a></p>
+  </div>
+</section>
+
+<div class="gap" id="capability"></div>
+
+<!-- PROJECT 03 -->
+<section class="slide">
+  <div class="rv">
+    <div class="proj-no">Project 03 — Capability</div>
+    <h2 class="proj-title">기술의 속도에 맞춰,<br>아이디어를 실현하다.</h2>
+    <p class="quiet">AI와 데이터를 도구 삼아 기획을 결과물로 — 두 번의 수상과 한 건의 특허로 이어졌습니다.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">하이라이터로 칠하면,<br>신고 끝.</h2>
+    <p class="quiet"><strong>Truthmarker</strong> — 허위정보 원스텝 신고 플랫폼.
+    내부 구조와 UX 설계를 담당했습니다. KAIST 공모전 플랫폼 개발 부문 <strong>우수상</strong>.</p>
+    <div class="pic narrow"><img src="assets/tm-app.jpg" alt="Truthmarker 원터치 하이라이터 신고 화면" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">AI로 만든 동요를<br>궁궐에서 불렀습니다.</h2>
+    <p class="quiet"><strong>우리의 자랑, 창덕궁</strong> — 고궁 청소년 문화학교를 직접 기획·주최.
+    <strong>국가유산진흥원장상</strong>을 받았습니다.<br><br>
+    <a class="link-u" href="https://youtu.be/w0uiGq4I15I" target="_blank" rel="noopener">리릭 비디오 보기</a></p>
+    <div class="pic narrow"><img src="assets/cd-video.jpg" alt="우리의 자랑 창덕궁 — 행사 영상" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="rv">
+    <h2 class="statement-m">리서치에서 출발한 아이디어,<br>특허가 되다.</h2>
+    <p class="quiet"><strong>모듈형 돌봄 로봇</strong> — 평소에는 교감하는 AI 헤드,
+    외출할 때는 자율주행 바디와 합체해 의자이자 이동수단이 됩니다.
+    정서적 돌봄과 이동 보조를 하나의 경험으로 연결했습니다.</p>
+    <div class="list">
+      <div class="row"><span class="k">출원번호</span><span class="v"><strong>10-2025-0204466</strong></span></div>
+      <div class="row"><span class="k">출원일</span><span class="v">2025.12.19</span></div>
+      <div class="row"><span class="k">출원인</span><span class="v">성신여자대학교 산학협력단 · 공동 발명자 등재</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <section class="slide" style="padding-bottom:40px">
+    <div class="rv">
+      <h2 class="statement-m">새로운 시작,<br>함께하시겠어요?</h2>
+      <div class="contact-links">
+        <a class="link-u" href="mailto:20221041@sungshin.ac.kr">20221041@sungshin.ac.kr</a>
+        <a class="link-u" href="tel:01038998592">010.3899.8592</a>
+      </div>
+      <p class="fin">© 2025 SONG YUNA — SERVICE DESIGN PORTFOLIO</p>
+    </div>
+  </section>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}
+});},{threshold:.15,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+/* count up once */
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return;
+  var el=e.target,end=+el.dataset.count;
+  cio.unobserve(el);
+  if(reduce){el.textContent=end;return;}
+  var t0=performance.now(),dur=1400;
+  (function tick(t){
+    var p=Math.min(((t||performance.now())-t0)/dur,1),s=1-Math.pow(1-p,3);
+    el.textContent=Math.round(end*s);
+    if(p<1)requestAnimationFrame(tick);
+  })();
+});},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
+})();
+</script>
+</body>
+</html>
