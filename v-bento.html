@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>송유나 — Service Design Portfolio</title>
+<meta name="description" content="새로운 시작을 함께하고 싶은 서비스 디자이너 송유나의 포트폴리오">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --ink:#1c1a2e;
+  --ink-soft:#5b5870;
+  --vio:#7c5cff;
+  --vio-deep:#5f3ff0;
+  --vio-soft:#efeaff;
+  --peach:#ffd9c4;
+  --mint:#c9f2e2;
+  --lav:#ded6ff;
+  --card:#ffffff;
+  --r:26px;
+  --shadow:0 10px 30px rgba(60,44,130,.08),0 2px 8px rgba(60,44,130,.05);
+  --shadow-h:0 26px 56px rgba(60,44,130,.16),0 6px 16px rgba(60,44,130,.08);
+  --e-spring:cubic-bezier(.34,1.56,.5,1);
+  --e-out:cubic-bezier(.16,1,.3,1);
+  --max:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
+  background:
+    linear-gradient(180deg,#f7f5ff 0%,#fdf6f1 34%,#f2fbf6 68%,#f6f4ff 100%);
+  overflow-x:hidden;
+}
+::selection{background:var(--vio);color:#fff}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+/* floating gradient blobs behind everything */
+.blobs{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;will-change:transform;
+  animation:blobFloat 26s ease-in-out infinite alternate}
+.blob.b1{width:520px;height:520px;background:#ded1ff;top:-10%;left:-8%}
+.blob.b2{width:460px;height:460px;background:#ffe1cf;top:24%;right:-10%;animation-duration:32s;animation-delay:-8s}
+.blob.b3{width:480px;height:480px;background:#cdf0e0;top:58%;left:-12%;animation-duration:38s;animation-delay:-16s}
+.blob.b4{width:420px;height:420px;background:#e6ddff;bottom:-8%;right:-6%;animation-duration:29s;animation-delay:-4s}
+@keyframes blobFloat{
+  0%{transform:translate(0,0) scale(1)}
+  50%{transform:translate(60px,-40px) scale(1.12)}
+  100%{transform:translate(-50px,50px) scale(.94)}}
+@media (prefers-reduced-motion:reduce){.blob{animation:none}}
+
+/* ---------- pill nav ---------- */
+nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;
+  display:flex;align-items:center;gap:4px;padding:8px;border-radius:999px;
+  background:rgba(255,255,255,.6);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.8);box-shadow:0 8px 32px rgba(60,44,130,.12);
+  max-width:calc(100vw - 24px)}
+nav .logo{font-weight:800;font-size:.86rem;letter-spacing:.02em;text-decoration:none;
+  padding:8px 14px;color:var(--vio-deep);white-space:nowrap}
+nav a.lnk{text-decoration:none;font-size:.83rem;font-weight:600;color:var(--ink-soft);
+  padding:8px 14px;border-radius:999px;transition:background .25s,color .25s;white-space:nowrap}
+nav a.lnk:hover{background:var(--vio-soft);color:var(--vio-deep)}
+nav a.lnk.on{background:var(--vio);color:#fff}
+@media (max-width:640px){
+  nav{gap:0;padding:6px}
+  nav .logo{font-size:.74rem;padding:6px 8px}
+  nav a.lnk{font-size:.72rem;padding:6px 8px}
+  nav a.lnk[href="#capability"]{display:none}
+}
+
+/* ---------- generic bento ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+section{padding:90px 0}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{background:var(--card);border-radius:var(--r);padding:30px;box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.9);position:relative;overflow:hidden;
+  transition:transform .55s var(--e-spring),box-shadow .45s ease}
+@media (hover:hover){
+  .card:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:var(--shadow-h)}
+}
+.card.glass{background:rgba(255,255,255,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.card.vio{background:linear-gradient(135deg,var(--vio),var(--vio-deep));color:#fff;border:0}
+.card.dark{background:linear-gradient(135deg,#241f3d,#3a3160);color:#fff;border:0}
+.card.pastel-l{background:linear-gradient(140deg,#f1ecff,#e4dbff)}
+.card.pastel-p{background:linear-gradient(140deg,#fff0e6,#ffdfca)}
+.card.pastel-m{background:linear-gradient(140deg,#e5f9ef,#cef2e0)}
+.card.img-card{padding:0;display:flex}
+.card.img-card img{width:100%;height:100%;object-fit:cover;object-position:top}
+/* spans */
+.s12{grid-column:span 12}.s8{grid-column:span 8}.s7{grid-column:span 7}
+.s6{grid-column:span 6}.s5{grid-column:span 5}.s4{grid-column:span 4}.s3{grid-column:span 3}
+@media (max-width:960px){
+  .s8,.s7,.s6,.s5{grid-column:span 12}
+  .s4,.s3{grid-column:span 6}
+}
+@media (max-width:600px){
+  .bento{gap:14px}
+  .card{padding:24px;border-radius:22px}
+  .s4,.s3{grid-column:span 12}
+  .s3.keep-half,.s4.keep-half{grid-column:span 6}
+}
+
+/* reveal springy entrance */
+html.js .rv{opacity:0;transform:scale(.96) translateY(18px);
+  transition:opacity .8s var(--e-out),transform .9s var(--e-spring)}
+html.js .rv.on{opacity:1;transform:none}
+html.js .rv.d1{transition-delay:.07s}html.js .rv.d2{transition-delay:.14s}
+html.js .rv.d3{transition-delay:.21s}html.js .rv.d4{transition-delay:.28s}
+@media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}}
+
+/* section head */
+.sec-head{margin-bottom:34px}
+.sec-head .kicker{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:800;
+  letter-spacing:.14em;color:var(--vio-deep);background:var(--vio-soft);
+  padding:8px 16px;border-radius:999px;margin-bottom:16px}
+.sec-head .kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--vio)}
+.sec-head h2{font-size:clamp(1.6rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.sec-head .catch{margin-top:12px;color:var(--ink-soft);font-size:clamp(.92rem,1.7vw,1.05rem);max-width:680px}
+
+/* small bits */
+.pill{display:inline-block;padding:6px 14px;border-radius:999px;font-size:.76rem;font-weight:700;
+  background:var(--vio-soft);color:var(--vio-deep)}
+.pill.on-dark{background:rgba(255,255,255,.16);color:#fff}
+.eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.16em;color:var(--vio);margin-bottom:10px}
+.card.vio .eyebrow,.card.dark .eyebrow{color:rgba(255,255,255,.75)}
+.card h3{font-size:1.25rem;font-weight:800;letter-spacing:-.01em;line-height:1.35;margin-bottom:10px}
+.card h4{font-size:1.05rem;font-weight:800;margin-bottom:8px}
+.card p{font-size:.9rem;color:var(--ink-soft)}
+.card p strong{color:var(--ink)}
+.card.vio p,.card.dark p{color:rgba(255,255,255,.82)}
+.card.vio p strong,.card.dark p strong{color:#fff}
+
+/* stat cards */
+.stat-card{display:flex;flex-direction:column;justify-content:center;text-align:center;min-height:140px}
+.stat-card .num{font-size:clamp(2rem,4.4vw,2.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.stat-card .num .unit{font-size:.5em;font-weight:700;margin-left:2px;color:var(--vio)}
+.stat-card .lbl{margin-top:8px;font-size:.82rem;color:var(--ink-soft);font-weight:600}
+.stat-card.vio .num .unit{color:#d7ccff}
+.stat-card.vio .lbl{color:rgba(255,255,255,.8)}
+
+/* ---------- HERO ---------- */
+.hero{padding:150px 0 60px}
+.hero .bento{align-items:stretch}
+.hero-main{grid-column:span 8;padding:48px 44px;display:flex;flex-direction:column;justify-content:center;min-height:420px}
+.hero-main .hi{display:inline-flex;align-items:center;gap:8px;font-size:.86rem;font-weight:700;color:var(--vio-deep);
+  background:var(--vio-soft);padding:9px 18px;border-radius:999px;width:max-content;margin-bottom:22px}
+.hero-main .hi .wave{display:inline-block;animation:wave 2.4s ease-in-out infinite;transform-origin:70% 70%}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-8deg)}}
+.hero-main h1{font-size:clamp(1.9rem,4.6vw,3.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.28}
+.hero-main h1 .grad{background:linear-gradient(100deg,var(--vio),#b78bff 55%,#ff9d76);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-main .sub{margin-top:18px;font-size:clamp(.95rem,1.8vw,1.08rem);color:var(--ink-soft);max-width:520px}
+.hero-main .roles{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.hero-main .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-size:.9rem;
+  font-weight:700;text-decoration:none;transition:transform .35s var(--e-spring),box-shadow .3s}
+.btn.primary{background:var(--vio);color:#fff;box-shadow:0 10px 24px rgba(124,92,255,.35)}
+.btn.primary:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(124,92,255,.45)}
+.btn.ghost{background:#fff;color:var(--vio-deep);border:1.5px solid #e4ddff}
+.btn.ghost:hover{transform:translateY(-3px)}
+.hero-side{grid-column:span 4;display:flex;flex-direction:column;gap:18px}
+.hero-shot{flex:1;min-height:250px;position:relative;padding:0}
+.hero-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;
+  transition:transform 1.2s var(--e-out)}
+.hero-shot:hover img{transform:scale(1.05)}
+.hero-shot .tag{position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(255,255,255,.85);
+  backdrop-filter:blur(8px);padding:7px 14px;border-radius:999px;font-size:.75rem;font-weight:800;color:var(--vio-deep)}
+.hero-strip{grid-column:span 12;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media (max-width:960px){
+  .hero{padding-top:120px}
+  .hero-main{grid-column:span 12;min-height:0}
+  .hero-side{grid-column:span 12;flex-direction:row}
+  .hero-shot{min-height:220px}
+  .hero-strip{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .hero-side{flex-direction:column}
+  .hero-main{padding:32px 26px}
+}
+
+/* about facts */
+.fact-list{display:flex;flex-direction:column;gap:0}
+.fact{display:grid;grid-template-columns:86px 1fr;gap:12px;padding:12px 0;border-bottom:1px dashed #e6e1f5;font-size:.88rem}
+.fact:last-child{border-bottom:0}
+.fact dt{font-weight:800;color:var(--vio-deep)}
+.fact dd{color:var(--ink-soft)}
+.fact dd strong{color:var(--ink);font-weight:700}
+.award-emoji{font-size:1.7rem;display:inline-block;transition:transform .5s var(--e-spring)}
+.card:hover .award-emoji{transform:scale(1.25) rotate(-10deg)}
+
+/* project hero cards */
+.proj-hero{padding:0;display:grid;grid-template-columns:1.05fr .95fr;min-height:340px}
+.proj-hero .txt{padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
+.proj-hero .txt h3{font-size:clamp(1.5rem,3vw,2.1rem);margin:14px 0 12px;line-height:1.3}
+.proj-hero .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.proj-hero .visual{position:relative;overflow:hidden}
+.proj-hero .visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;
+  transition:transform 1.2s var(--e-out)}
+.proj-hero:hover .visual img{transform:scale(1.04)}
+@media (max-width:820px){
+  .proj-hero{grid-template-columns:1fr}
+  .proj-hero .visual{min-height:260px;order:-1}
+  .proj-hero .visual img{position:absolute}
+}
+
+/* list style inside cards */
+.card ul.dots{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.card ul.dots li{font-size:.87rem;color:var(--ink-soft);padding-left:18px;position:relative}
+.card ul.dots li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--vio)}
+.card ul.dots li strong{color:var(--ink)}
+.card.dark ul.dots li{color:rgba(255,255,255,.82)}
+.card.dark ul.dots li strong{color:#fff}
+.card.dark ul.dots li::before{background:#a68bff}
+
+/* arrow rows (pain→sol) */
+.p2s{display:flex;flex-direction:column;gap:10px}
+.p2s .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#f8f6ff;border-radius:16px;padding:12px 16px;font-size:.86rem}
+.p2s .row .from{color:var(--ink-soft);font-weight:600;flex:1;min-width:180px}
+.p2s .row .arw{color:var(--vio);font-weight:800}
+.p2s .row .to{color:var(--vio-deep);font-weight:800}
+
+/* survey bars */
+.bars{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.bar-row .q{font-size:.83rem;font-weight:600;margin-bottom:6px;display:flex;justify-content:space-between;gap:10px}
+.bar-row .q b{color:var(--vio-deep)}
+.bar-row .track{height:12px;border-radius:999px;background:#eeeafb;overflow:hidden}
+.bar-row .fill{height:100%;border-radius:999px;width:0;background:linear-gradient(90deg,var(--vio),#b78bff);
+  transition:width 1.2s .2s cubic-bezier(.2,.6,.2,1)}
+.card.go .bar-row .fill{width:var(--w)}
+html:not(.js) .bar-row .fill{width:var(--w)}
+
+/* UT columns */
+.ut-cols{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:14px}
+@media (max-width:700px){.ut-cols{grid-template-columns:1fr}}
+.ut-col{background:#f8f6ff;border-radius:18px;padding:18px}
+.ut-col .t{display:inline-block;background:#fff;color:var(--vio-deep);font-weight:800;font-size:.76rem;
+  padding:6px 12px;border-radius:999px;margin-bottom:12px;box-shadow:0 2px 8px rgba(60,44,130,.08)}
+.ut-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.ut-col li{font-size:.83rem;color:var(--ink-soft);padding-left:16px;position:relative}
+.ut-col li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:2px;background:var(--vio)}
+
+/* positioning mini-map */
+.pos-canvas{position:relative;aspect-ratio:1.15/1;width:100%;margin-top:10px}
+.pos-axis{position:absolute;background:#e2dcf6}
+.pos-axis.h{left:0;right:0;top:50%;height:1.5px}
+.pos-axis.v{top:0;bottom:0;left:50%;width:1.5px}
+.pos-lbl{position:absolute;font-size:.64rem;font-weight:700;color:var(--ink-soft)}
+.pos-lbl.top{top:2px;left:50%;transform:translateX(-50%)}
+.pos-lbl.bottom{bottom:2px;left:50%;transform:translateX(-50%)}
+.pos-lbl.left{left:2px;top:44%}
+.pos-lbl.right{right:2px;top:44%}
+.pos-item{position:absolute;transform:translate(-50%,-50%);font-size:.68rem;font-weight:600;color:var(--ink-soft);
+  background:#fff;border:1px solid #eae5f8;padding:3px 9px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 6px rgba(60,44,130,.07)}
+.pos-item.hero-pos{background:var(--vio);border-color:var(--vio);color:#fff;font-weight:800;font-size:.74rem;
+  box-shadow:0 8px 18px rgba(124,92,255,.4);animation:floatY 3s ease-in-out infinite}
+@keyframes floatY{50%{transform:translate(-50%,calc(-50% - 7px))}}
+
+/* footer / contact */
+footer{padding:90px 0 60px}
+.contact-card{padding:56px 40px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.contact-card h2{font-size:clamp(1.8rem,4.4vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.contact-card p{margin-top:14px;color:rgba(255,255,255,.85);font-size:1rem}
+.contact-card .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.contact-card .row a{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.9rem;font-weight:700;
+  text-decoration:none;transition:background .25s,transform .35s var(--e-spring)}
+.contact-card .row a:hover{background:rgba(255,255,255,.26);transform:translateY(-3px)}
+.fin{text-align:center;margin-top:40px;font-size:.76rem;color:var(--ink-soft);letter-spacing:.08em}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="blobs" aria-hidden="true">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+</div>
+
+<nav id="nav">
+  <a class="logo" href="#top">YUNA ✿</a>
+  <a class="lnk" href="#about" data-sec="about">About</a>
+  <a class="lnk" href="#approach" data-sec="approach">WillChair</a>
+  <a class="lnk" href="#insight" data-sec="insight">Navigation</a>
+  <a class="lnk" href="#capability" data-sec="capability">Capability</a>
+  <a class="lnk" href="#contact" data-sec="contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="bento">
+      <div class="card glass hero-main rv">
+        <span class="hi"><span class="wave">👋</span> 안녕하세요, 서비스 디자이너 송유나입니다</span>
+        <h1>사람의 마음을 읽고,<br><span class="grad">경계를 넘어</span> 설계합니다.</h1>
+        <p class="sub">직접 만나고, 직접 겪어보고, 직접 만듭니다. 휠체어에 앉아 도시를 건너고,
+        운전자 130명의 목소리를 모으고, AI로 만든 동요를 궁궐에서 불렀습니다.</p>
+        <div class="roles">
+          <span class="pill">Service Design</span>
+          <span class="pill">UX Research</span>
+          <span class="pill">AI × Design</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="#approach">프로젝트 보러가기 ↓</a>
+          <a class="btn ghost" href="#contact">연락하기</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="card img-card hero-shot rv d1">
+          <img src="assets/nv-voice.jpg" alt="음성 내비게이션 홈 화면">
+          <span class="tag">🎙️ Voice Navigation</span>
+        </div>
+        <div class="card img-card hero-shot rv d2">
+          <img src="assets/wc-sol1.jpg" alt="WillChair 맞춤형 필터 화면">
+          <span class="tag">🦽 WillChair</span>
+        </div>
+      </div>
+      <div class="hero-strip">
+        <div class="card stat-card rv"><div class="num"><span data-count="130">0</span><span class="unit">+명</span></div><div class="lbl">리서치 참여자</div></div>
+        <div class="card stat-card vio rv d1"><div class="num"><span data-count="96">0</span><span class="unit">%</span></div><div class="lbl">리디자인 후 만족도</div></div>
+        <div class="card stat-card rv d2"><div class="num"><span data-count="1">0</span><span class="unit">건</span></div><div class="lbl">특허 출원 · 발명자 등재</div></div>
+        <div class="card stat-card rv d3"><div class="num"><span data-count="2">0</span><span class="unit">회</span></div><div class="lbl">전국 단위 수상</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">ABOUT</span>
+      <h2>공감에서 출발해, 실행으로 증명합니다</h2>
+      <p class="catch">리서치로 발견한 진짜 문제를, 기술과 디자인으로 풀어냅니다. 경계를 넘는 행동력이 저의 디자인 방법론입니다.</p>
+    </div>
+    <div class="bento">
+      <div class="card s7 rv">
+        <div class="eyebrow">PROFILE</div>
+        <h3>기술과 사용자 경험 사이의 다리</h3>
+        <p>성신여자대학교에서 <strong>서비스디자인공학</strong>을 주전공으로, <strong>AI</strong>를 복수전공으로 공부하며
+        사용자 경험과 기술 사이의 다리를 놓는 연습을 이어가고 있습니다.</p>
+        <dl class="fact-list" style="margin-top:18px">
+          <div class="fact"><dt>이름</dt><dd><strong>송유나</strong> SONG YUNA</dd></div>
+          <div class="fact"><dt>학력</dt><dd>성신여자대학교 <strong>서비스디자인공학과</strong> 주전공 · <strong>AI학과</strong> 복수전공</dd></div>
+          <div class="fact"><dt>활동</dt><dd>유네스코 세계유산 지킴이 · 국제학생회 · 산학협력 프로젝트 WillChair</dd></div>
+          <div class="fact"><dt>스킬</dt><dd><strong>Figma</strong> · Illustrator · Premiere Pro · PowerPoint</dd></div>
+          <div class="fact"><dt>어학</dt><dd>OPIC <strong>IH</strong></dd></div>
+        </dl>
+      </div>
+      <div class="card s5 pastel-l rv d1">
+        <span class="award-emoji">🏆</span>
+        <div class="eyebrow" style="margin-top:10px">AWARD · 2024</div>
+        <h4>허위정보 대응 아이디어 공모전 우수상</h4>
+        <p>KAIST 주관 · 플랫폼 개발 부문</p>
+        <div style="height:22px"></div>
+        <span class="award-emoji">🏛️</span>
+        <div class="eyebrow" style="margin-top:10px">AWARD · 2025</div>
+        <h4>청년 유네스코 세계유산지킴이<br>국가유산진흥원장상</h4>
+        <p>국가유산청 주관 · 활동경진대회</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT 01 : WillChair -->
+<section id="approach">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">PROJECT 01 — APPROACH</span>
+      <h2>경계를 넘어, 소비자를 공감하다</h2>
+      <p class="catch">교통약자 베리어프리 지도 앱 WillChair · 커뮤니티 서비스 기획 &amp; 비즈니스 모델 · 산학협력 프로젝트</p>
+    </div>
+    <div class="bento">
+      <div class="card vio proj-hero s12 rv">
+        <div class="txt">
+          <span class="pill on-dark" style="width:max-content">WillChair</span>
+          <h3>"교통약자의 동네여행을 함께하는<br>평생 외출 동반자"</h3>
+          <p>책상이 아닌 현장에서 시작한 리서치 — 포스터를 만들어 인터뷰이를 모집하고,
+          콜드메일로 인플루언서를 섭외하고, 휠체어에 앉아 하루를 이동해봤습니다.</p>
+          <div class="chips">
+            <span class="pill on-dark">유저 리서치</span>
+            <span class="pill on-dark">커뮤니티 서비스 설계</span>
+            <span class="pill on-dark">비즈니스 모델 구상</span>
+          </div>
+        </div>
+        <div class="visual"><img src="assets/wc-sol2.jpg" alt="WillChair 이동성·접근성 통합 화면" loading="lazy"></div>
+      </div>
+
+      <div class="card s3 keep-half rv"><div class="eyebrow">RESEARCH 01</div><h4>심층 인터뷰</h4>
+        <p>모집 포스터를 직접 디자인해 교통약자를 만나고, 대면·화상·전화 등 <strong>상대가 편한 방식</strong>으로 진행했습니다.</p></div>
+      <div class="card s3 keep-half rv d1"><div class="eyebrow">RESEARCH 02</div><h4>CEO 인터뷰</h4>
+        <p>WillChair 조준섭 대표에게 내부 데이터와 사업 방향을 직접 들었습니다. <strong>기업의 현실적 제약</strong> 위에서 기획해야 실행됩니다.</p></div>
+      <div class="card s3 keep-half rv d2"><div class="eyebrow">RESEARCH 03</div><h4>콜드메일 섭외</h4>
+        <p>휠체어 일상을 기록해온 인플루언서에게 콜드메일로 인터뷰를 성사 — <strong>수년간의 이동 경험담</strong>을 얻었습니다.</p></div>
+      <div class="card s3 keep-half pastel-p rv d3"><div class="eyebrow">RESEARCH 04</div><h4>롤플레잉</h4>
+        <p>직접 휠체어를 타고 하루를 이동. 턱 하나, 경사 하나가 경로 전체를 바꾼다는 걸 <strong>몸으로 경험</strong>했습니다.</p></div>
+
+      <div class="card s7 rv" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="eyebrow">3 FINDINGS → 3 SOLUTIONS</div>
+        <h4>리서치가 알려준 세 가지 사실</h4>
+        <div class="p2s" style="margin-top:14px">
+          <div class="row"><span class="from">장애의 정도와 부위에 따라 필요한 정보가 전부 다르다</span><span class="arw">→</span><span class="to">맞춤형 필터</span></div>
+          <div class="row"><span class="from">'갈 수 있는 곳'을 알아도 '가는 방법'이 막히면 소용없다</span><span class="arw">→</span><span class="to">이동성 통합</span></div>
+          <div class="row"><span class="from">가장 정확한 접근성 정보는 그 동네 사람에게서 나온다</span><span class="arw">→</span><span class="to">지역 커뮤니티</span></div>
+        </div>
+      </div>
+      <div class="card s5 rv d1">
+        <div class="eyebrow">POSITIONING</div>
+        <h4>하이퍼로컬 × 쌍방향, 비어 있던 자리</h4>
+        <div class="pos-canvas">
+          <div class="pos-axis h"></div><div class="pos-axis v"></div>
+          <span class="pos-lbl top">지역 특화 높음</span>
+          <span class="pos-lbl bottom">지역 특화 낮음</span>
+          <span class="pos-lbl left">일방향</span>
+          <span class="pos-lbl right">쌍방향</span>
+          <span class="pos-item" style="left:30%;top:72%">카카오맵</span>
+          <span class="pos-item" style="left:24%;top:58%">네이버 지도</span>
+          <span class="pos-item" style="left:66%;top:38%">당근마켓</span>
+          <span class="pos-item" style="left:58%;top:56%">Nextdoor</span>
+          <span class="pos-item hero-pos" style="left:76%;top:18%">WillChair</span>
+        </div>
+      </div>
+
+      <div class="card img-card s4 rv" style="min-height:280px"><img src="assets/wc-sol1.jpg" alt="WillChair 맞춤형 필터 화면" loading="lazy"></div>
+      <div class="card s4 rv d1">
+        <div class="eyebrow">SOLUTION 01–03</div>
+        <h4>세 개의 솔루션</h4>
+        <ul class="dots">
+          <li><strong>맞춤형 필터</strong> — 경사로·엘리베이터·전용주차장·화장실 등 '내가 갈 수 있는 곳'을 바로</li>
+          <li><strong>이동성 + 접근성 통합</strong> — 대중교통 31분 vs 콜택시 13분 비교, 그 자리에서 호출까지</li>
+          <li><strong>지역 기반 커뮤니티</strong> — 소통이 데이터가 되고, 데이터가 다시 서비스가 되는 락인 구조</li>
+        </ul>
+      </div>
+      <div class="card img-card s4 rv d2" style="min-height:280px"><img src="assets/wc-sol3.jpg" alt="WillChair 지역 커뮤니티 화면" loading="lazy"></div>
+
+      <div class="card dark s4 keep-half rv"><div class="eyebrow">BUSINESS · B2C</div><h4>전동휠체어 서비스</h4>
+        <p>이동 패턴과 니즈를 가장 깊이 아는 서비스가, 전동휠체어라는 <strong>가장 큰 구매 결정</strong>도 가장 잘 도울 수 있습니다.</p></div>
+      <div class="card dark s4 keep-half rv d1"><div class="eyebrow">BUSINESS · B2B2C</div><h4>휠체어 통합 스토어</h4>
+        <p>흩어진 <strong>정부 수혜 정보를 연계</strong>해 지원금 매칭부터 구매까지 한 흐름으로 — 진입장벽 해소 그 자체입니다.</p></div>
+      <div class="card dark s4 rv d2"><div class="eyebrow">BUSINESS · B2G</div><h4>장애인 콜택시 사업</h4>
+        <p>쌓인 이동 수요 데이터로 지자체 <strong>배차 시스템을 재설계</strong>하고, 그 노하우를 기업용(B2B) 서비스로 확장합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT 02 : Naver Navigation -->
+<section id="insight">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">PROJECT 02 — INSIGHT</span>
+      <h2>집요하게 파고들어, 경험을 혁신하다</h2>
+      <p class="catch">네이버 내비게이션 리디자인 · 130여 명의 목소리로 다시 설계한 주행 경험 · HCI 실습 프로젝트</p>
+    </div>
+    <div class="bento">
+      <div class="card dark proj-hero s12 rv">
+        <div class="txt">
+          <span class="pill on-dark" style="width:max-content">Naver Navigation Redesign</span>
+          <h3>"운전 중 조작을 없애는<br>완전 음성 내비게이션"</h3>
+          <p>후발주자인 네이버 내비가 선택받으려면 조금 나은 개선이 아니라
+          <strong>갈아탈 이유가 되는 다른 경험</strong>이 필요하다 — 이 가설에서 시작했습니다.
+          #안전성 #유익성 #편의성 #쉬운사용</p>
+          <div class="chips">
+            <span class="pill on-dark">UT 25명</span>
+            <span class="pill on-dark">설문 106명</span>
+            <span class="pill on-dark">만족도 96%</span>
+          </div>
+        </div>
+        <div class="visual"><img src="assets/nv-voice.jpg" alt="음성 내비게이션 홈 — 오늘은 어디로 갈까요?" loading="lazy"></div>
+      </div>
+
+      <div class="card s7 rv">
+        <div class="eyebrow">USABILITY TEST · 25명</div>
+        <h4>주행을 세 구간으로 쪼갠 UT 설계</h4>
+        <p>실제 주행 시나리오를 부여하고, 경로 선택부터 '맥도날드 DT 경유지 추가', 주차 정보 탐색까지
+        과업별 수행 시간을 측정해 개선 전후를 비교했습니다.</p>
+        <div class="ut-cols" style="margin-top:16px">
+          <div class="ut-col"><span class="t">출발 전</span><ul><li>도착지 설정</li><li>경로 선택</li></ul></div>
+          <div class="ut-col"><span class="t">주행 중</span><ul><li>2D 모드 변경</li><li>사고 상황 제보</li><li>전체 경로 확인</li><li>주행 중 전화 받기</li><li>경유지 추가 — 맥도날드 DT</li></ul></div>
+          <div class="ut-col"><span class="t">도착 2분 전</span><ul><li>주차 정보 찾기</li></ul></div>
+        </div>
+      </div>
+      <div class="card s5 rv d1" data-bars>
+        <div class="eyebrow">SURVEY · 106명</div>
+        <h4>106명의 설문이 말해준 것</h4>
+        <p>63.5%가 20대 운전자, 55.3%가 TMAP 사용자였습니다.</p>
+        <div class="bars">
+          <div class="bar-row"><div class="q"><span>"처음 쓰던 내비를 바꾸지 않는다"</span><b>40%</b></div><div class="track"><div class="fill" style="--w:40%"></div></div></div>
+          <div class="bar-row"><div class="q"><span>"화면이 불편해서 안 쓴다"</span><b>43.8%</b></div><div class="track"><div class="fill" style="--w:44%"></div></div></div>
+          <div class="bar-row"><div class="q"><span>"메뉴가 깊고 요소가 불명확하다"</span><b>24%</b></div><div class="track"><div class="fill" style="--w:24%"></div></div></div>
+        </div>
+        <p style="margin-top:16px;font-size:.85rem">불만의 원인은 하나 — <strong>운전 중에 화면을 보고 눌러야 한다는 것.</strong>
+        그래서 개선이 아니라 전제를 바꿨습니다: 조작 자체를 없앤다.</p>
+      </div>
+
+      <div class="card s3 keep-half pastel-l rv"><div class="eyebrow">DESIGN 01</div><h4>내비가 먼저 말을 겁니다</h4>
+        <p>"오늘은 어디로 갈까요?" — 명령어를 외울 필요 없는 <strong>제시형 안내어</strong>로 대화를 설계했습니다.</p></div>
+      <div class="card s3 keep-half rv d1"><div class="eyebrow">DESIGN 02</div><h4>모든 기능, 3턴 이내</h4>
+        <p>경유지 추가, 주차장 추천, 가게 검색까지 어떤 기능도 <strong>대화 3턴 안에</strong> 끝납니다.</p></div>
+      <div class="card s3 keep-half rv d2"><div class="eyebrow">DESIGN 03</div><h4>네이버 생태계 연결</h4>
+        <p>기존 네이버 서비스 연동으로 검색–예약–이동이 <strong>하나의 흐름</strong>으로 이어집니다.</p></div>
+      <div class="card s3 keep-half pastel-m rv d3"><div class="eyebrow">DESIGN 04</div><h4>운전이 즐거워지는 장치</h4>
+        <p><strong>셀럽 음성</strong>과 캐릭터 아이콘 커스터마이징으로 안전한 기능에 애착을 더했습니다.</p></div>
+
+      <div class="card img-card s8 rv" style="min-height:260px"><img src="assets/nv-drive.jpg" alt="주행 중 화면 — 경유지 추가, 음성 검색, 주차장 추천" loading="lazy"></div>
+      <div class="card vio s4 rv d1" style="display:flex;flex-direction:column;justify-content:center;text-align:center">
+        <div style="font-size:clamp(2.6rem,5vw,3.6rem);font-weight:800;letter-spacing:-.03em;line-height:1"><span data-count="96">0</span><span style="font-size:.45em">%</span></div>
+        <h4 style="margin-top:12px">리디자인 후 사용성 조사 만족도</h4>
+        <p style="font-size:.85rem">개선된 프로토타입으로 <strong>동일한 과업을 다시 측정</strong>해 '음성 중심 내비게이션'이라는 방향을 숫자로 검증했습니다.</p>
+        <a class="btn ghost" style="margin:18px auto 0" href="https://youtu.be/lGnDjBUGnDw" target="_blank" rel="noopener">▶ 시연 영상 보기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT 03 : Capability -->
+<section id="capability">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">PROJECT 03 — CAPABILITY</span>
+      <h2>기술의 속도에 맞춰, 아이디어를 실현하다</h2>
+      <p class="catch">AI와 데이터를 도구 삼아 기획을 결과물로 — 두 번의 전국 단위 수상과 한 건의 특허 출원으로 이어갔습니다.</p>
+    </div>
+    <div class="bento">
+      <div class="card s6 rv">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <span class="pill">플랫폼 기획</span><span class="pill">AI 분석</span><span class="pill">정보 시각화</span>
+        </div>
+        <h3>Truthmarker</h3>
+        <p style="font-weight:700;color:var(--vio-deep);margin-bottom:10px">허위정보 원스텝 신고 플랫폼</p>
+        <p>기존 플랫폼의 문제는 셋 — <strong>복잡한 신고 절차</strong>, <strong>결과 확인의 비효율</strong>, <strong>데이터 활용의 부재</strong>.
+        내부 구조와 UX를 이 세 문제에서부터 다시 설계했습니다.</p>
+        <div class="card img-card" style="margin:18px 0 0;box-shadow:none;border:1px solid #efeafc"><img src="assets/tm-app.jpg" alt="Truthmarker 홈과 원터치 하이라이터 신고 화면" loading="lazy"></div>
+        <ul class="dots">
+          <li>사진 위 허위 요소를 <strong>하이라이터로 칠하면 신고 끝</strong> — 원스텝 신고</li>
+          <li>입력 최소화로 처리 속도와 식별 정확성을 동시에 확보</li>
+          <li>축적된 신고 데이터로 <strong>실시간 허위정보 위험도</strong> 제공</li>
+          <li>레벨·게이지로 배우는 허위정보 유형 학습 홈</li>
+        </ul>
+        <p style="margin-top:16px"><span class="pill">🏆 KAIST 공모전 · 플랫폼 개발 부문 우수상</span></p>
+      </div>
+      <div class="card s6 rv d1">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <span class="pill">행사 기획</span><span class="pill">생성형 AI</span><span class="pill">홍보 마케팅</span>
+        </div>
+        <h3>우리의 자랑, 창덕궁</h3>
+        <p style="font-weight:700;color:var(--vio-deep);margin-bottom:10px">생성형 AI 문화유산 홍보 동요</p>
+        <p>창덕궁 고궁 청소년 문화학교를 직접 기획·주최했습니다. 생성형 AI로 만든 동요에 창덕궁 곳곳의 이야기를 가사로 녹여,
+        아이들이 노래와 율동으로 문화유산을 배우게 했습니다.</p>
+        <div class="card img-card" style="margin:18px 0 0;box-shadow:none;border:1px solid #efeafc"><img src="assets/cd-video.jpg" alt="우리의 자랑 창덕궁 — 행사 영상과 리릭 비디오" loading="lazy"></div>
+        <ul class="dots">
+          <li>AI 작곡·작사로 동요 <strong>'우리의 자랑, 창덕궁'</strong> 제작</li>
+          <li>가사 속 장소 정보로 참가자의 <strong>문화유산 이해도 향상</strong></li>
+          <li>'문화유산의 일상 속 향유'를 체험형 프로그램으로 구현</li>
+          <li>기획력·교육 효과를 인정받아 <strong>국가유산진흥원장상 수상</strong></li>
+        </ul>
+        <p style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <span class="pill">🏛️ 국가유산청 · 국가유산진흥원장상</span>
+          <a href="https://youtu.be/w0uiGq4I15I" target="_blank" rel="noopener" style="font-size:.82rem;font-weight:700;color:var(--vio-deep)">리릭 비디오 보기 ↗</a>
+        </p>
+      </div>
+
+      <!-- patent cluster -->
+      <div class="card dark s12 rv">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+          <span class="pill on-dark">📜 특허 출원 · 공동 발명자</span>
+          <span class="pill on-dark">산업통상자원부 R&amp;D 과제</span>
+        </div>
+        <h3 style="font-size:clamp(1.3rem,3vw,1.8rem)">모듈형 돌봄 로봇 <span style="font-weight:600;opacity:.6;font-size:.7em">Modular Care Robots</span></h3>
+        <p>WillChair에서 확인한 이동약자의 문제의식을 하드웨어로 확장한 프로젝트.
+        리서치에서 출발한 아이디어를 지식재산으로 완성해, 성신여자대학교 산학협력단 명의로 출원하고 발명자로 등재되었습니다.
+        평소에는 감정을 읽고 반응하는 <strong>AI 헤드</strong>가 곁에서 교감하고, 외출할 때는 자율주행 바디와 합체해
+        <strong>의자이자 이동수단</strong>이 됩니다 — 정서적 돌봄과 이동 보조를 하나의 경험으로 연결했습니다.</p>
+        <div class="bento" style="margin-top:22px;gap:14px">
+          <div class="card s4 glass" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12)">
+            <span style="font-size:1.4rem">🤖</span><h4 style="margin-top:8px;color:#fff">정서적 고립을 푸는 AI 헤드</h4>
+            <p style="color:rgba(255,255,255,.78)">비전 카메라로 표정과 행동을 읽어 감정 변화를 인식하고, 디스플레이로 감정을 표현하며 반응합니다.</p>
+          </div>
+          <div class="card s4 glass" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12)">
+            <span style="font-size:1.4rem">🦽</span><h4 style="margin-top:8px;color:#fff">외출 문턱 제거</h4>
+            <p style="color:rgba(255,255,255,.78)">멈추면 의자, 달리면 탈것. 접이식 등받이와 발판으로 타고 내리는 과정까지 자연스럽게 — 보호자 없이도 혼자 외출.</p>
+          </div>
+          <div class="card s4 glass" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12)">
+            <span style="font-size:1.4rem">🛡️</span><h4 style="margin-top:8px;color:#fff">신뢰를 만드는 안전 설계</h4>
+            <p style="color:rgba(255,255,255,.78)">바닥 장애물을 읽는 카메라, 초음파 센서와 IMU, 소프트 로보틱스 소재의 외형까지 — 안심하고 몸을 맡길 수 있게.</p>
+          </div>
+        </div>
+        <p style="margin-top:18px;font-size:.75rem;color:rgba(255,255,255,.5)">출원번호 10-2025-0204466 · 출원일 2025.12.19 · 출원인 성신여자대학교 연구 산학협력단 · 디지털융합디자인 전문인력양성사업(한국디자인진흥원)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="card vio contact-card rv">
+      <span style="font-size:2rem">💌</span>
+      <h2 style="margin-top:14px">새로운 시작,<br>함께하시겠어요?</h2>
+      <p>공감으로 시작해 실행으로 끝내는 디자이너, 송유나입니다.</p>
+      <div class="row">
+        <a href="mailto:20221041@sungshin.ac.kr">✉️ 20221041@sungshin.ac.kr</a>
+        <a href="tel:01038998592">📞 010.3899.8592</a>
+      </div>
+    </div>
+    <p class="fin">© 2025 SONG YUNA · SERVICE DESIGN PORTFOLIO</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting)e.target.classList.add('on');
+});},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+/* counters */
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return;
+  var el=e.target,end=+el.dataset.count;
+  cio.unobserve(el);
+  if(reduce){el.textContent=end;return;}
+  var t0=performance.now(),dur=1400;
+  (function tick(t){
+    var p=Math.min(((t||performance.now())-t0)/dur,1),ez=1-Math.pow(1-p,3);
+    el.textContent=Math.round(end*ez);
+    if(p<1)requestAnimationFrame(tick);
+  })();
+});},{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(function(el){el.textContent='0';cio.observe(el)});
+
+/* survey bars */
+var bio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting)e.target.classList.add('go');
+});},{threshold:.35});
+document.querySelectorAll('[data-bars]').forEach(function(el){bio.observe(el)});
+
+/* subtle tilt on hover */
+if(!reduce&&matchMedia('(hover:hover)').matches){
+  document.querySelectorAll('.card').forEach(function(card){
+    card.addEventListener('mousemove',function(ev){
+      var r=card.getBoundingClientRect();
+      if(r.width>760)return; /* skip very wide cards */
+      var x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;
+      card.style.transition='transform .18s ease-out';
+      card.style.transform='perspective(900px) translateY(-6px) rotateY('+(x*3.5)+'deg) rotateX('+(-y*3.5)+'deg)';
+    });
+    card.addEventListener('mouseleave',function(){
+      card.style.transition='transform .7s cubic-bezier(.34,1.56,.5,1)';
+      card.style.transform='';
+    });
+  });
+}
+
+/* nav highlight */
+var links=[].slice.call(document.querySelectorAll('nav a.lnk'));
+var sio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return;
+  links.forEach(function(l){l.classList.toggle('on',l.dataset.sec===e.target.id)});
+});},{rootMargin:'-40% 0px -55% 0px'});
+['about','approach','insight','capability','contact'].forEach(function(id){
+  var el=document.getElementById(id);if(el)sio.observe(el);
+});
+})();
+</script>
+</body>
+</html>

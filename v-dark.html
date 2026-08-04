@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>송유나 — Service Design Portfolio</title>
+<meta name="description" content="새로운 시작을 함께하고 싶은 서비스 디자이너 송유나의 포트폴리오 — 다크 매거진 에디션">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;900&display=swap">
+<style>
+:root{
+  --bg:#0c0c10;
+  --bg-2:#111117;
+  --bg-3:#16161e;
+  --ink:#ece7dd;
+  --ink-soft:#9b968c;
+  --ink-dim:#6b675f;
+  --gold:#e8a33d;
+  --gold-soft:#c98d33;
+  --gold-dim:rgba(232,163,61,.35);
+  --hairline:rgba(232,163,61,.22);
+  --hairline-w:rgba(236,231,221,.12);
+  --serif:'Noto Serif KR',serif;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,system-ui,sans-serif;
+  --rail:88px;
+  --max:1060px;
+  --e-out:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);color:var(--ink);
+  line-height:1.7;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--gold);color:#0c0c10}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+/* faint paper grain on dark */
+body::after{content:"";position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* reveal */
+html.js .rv{opacity:0;transform:translateY(26px);transition:opacity 1.1s var(--e-out),transform 1.1s var(--e-out)}
+html.js .rv.on{opacity:1;transform:none}
+html.js .rv.d1{transition-delay:.1s}html.js .rv.d2{transition-delay:.2s}html.js .rv.d3{transition-delay:.3s}
+@media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}}
+
+/* ============ LEFT RAIL ============ */
+.rail{position:fixed;top:0;left:0;bottom:0;width:var(--rail);z-index:100;
+  border-right:1px solid var(--hairline-w);background:rgba(12,12,16,.82);backdrop-filter:blur(8px);
+  display:flex;flex-direction:column;align-items:center;padding:26px 0}
+.rail .r-name{writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;font-size:.82rem;
+  letter-spacing:.42em;color:var(--ink-soft);text-decoration:none;transition:color .3s}
+.rail .r-name:hover{color:var(--gold)}
+.rail .r-idx{margin-top:auto;margin-bottom:auto;display:flex;flex-direction:column;gap:26px;align-items:center}
+.rail .r-idx a{text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.14em;
+  color:var(--ink-dim);display:flex;flex-direction:column;align-items:center;gap:7px;transition:color .3s}
+.rail .r-idx a::after{content:"";width:1px;height:0;background:var(--gold);transition:height .45s var(--e-out)}
+.rail .r-idx a:hover,.rail .r-idx a.on{color:var(--gold)}
+.rail .r-idx a.on::after{height:22px}
+.rail .r-foot{writing-mode:vertical-rl;font-size:.62rem;letter-spacing:.34em;color:var(--ink-dim)}
+main{margin-left:var(--rail)}
+@media (max-width:760px){
+  .rail{top:0;left:0;right:0;bottom:auto;width:auto;height:52px;flex-direction:row;
+    border-right:0;border-bottom:1px solid var(--hairline-w);padding:0 18px;gap:18px}
+  .rail .r-name{writing-mode:horizontal-tb;letter-spacing:.3em;font-size:.74rem}
+  .rail .r-idx{margin:0 0 0 auto;flex-direction:row;gap:20px}
+  .rail .r-idx a{flex-direction:row;gap:6px}
+  .rail .r-idx a::after{display:none}
+  .rail .r-idx a .lbl{display:none}
+  .rail .r-foot{display:none}
+  main{margin-left:0;padding-top:52px}
+}
+#bar{position:fixed;top:0;left:0;height:2px;width:0;z-index:120;background:var(--gold)}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:120px 6vw 90px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 50% at 70% 20%,rgba(232,163,61,.09),transparent 70%)}
+.hero .kicker{font-size:.76rem;letter-spacing:.5em;color:var(--gold);font-weight:600;margin-bottom:34px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(2.6rem,7.4vw,6.4rem);
+  line-height:1.22;letter-spacing:-.01em}
+.hero h1 .g{color:var(--gold)}
+.hero .sub{margin-top:36px;max-width:560px;color:var(--ink-soft);font-size:clamp(.95rem,1.6vw,1.08rem)}
+.hero .sub b{color:var(--ink);font-weight:600}
+.hero .roles{margin-top:46px;display:flex;gap:0;flex-wrap:wrap;border-top:1px solid var(--hairline);max-width:640px}
+.hero .roles span{padding:16px 28px 0 0;margin-right:28px;font-size:.8rem;letter-spacing:.18em;color:var(--ink-soft);font-weight:600}
+.hero .h-scroll{position:absolute;right:6vw;bottom:44px;font-size:.66rem;letter-spacing:.4em;color:var(--ink-dim);
+  display:flex;align-items:center;gap:14px}
+.hero .h-scroll::after{content:"";width:70px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.hero .big-year{position:absolute;right:-1vw;top:8%;font-family:var(--serif);font-weight:900;
+  font-size:clamp(6rem,17vw,15rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(232,163,61,.14);
+  pointer-events:none;user-select:none}
+
+/* ============ shared section chrome ============ */
+section{padding:130px 6vw;position:relative}
+.wrap{max-width:var(--max);margin:0 auto}
+.sec-eyebrow{display:flex;align-items:center;gap:18px;font-size:.72rem;letter-spacing:.4em;
+  color:var(--gold);font-weight:600;margin-bottom:26px}
+.sec-eyebrow::after{content:"";flex:0 0 70px;height:1px;background:var(--hairline)}
+h2.sec-title{font-family:var(--serif);font-weight:900;font-size:clamp(1.8rem,4.4vw,3.1rem);
+  line-height:1.35;letter-spacing:-.01em;margin-bottom:22px}
+.sec-catch{color:var(--ink-soft);font-size:clamp(.93rem,1.5vw,1.02rem);max-width:640px}
+.sec-catch b,.sec-catch strong{color:var(--ink);font-weight:600}
+.hr{border:0;border-top:1px solid var(--hairline);margin:0 6vw}
+
+/* ============ ABOUT ============ */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;margin-top:60px;align-items:start}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr;gap:44px}}
+.about-lead{font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.5rem);line-height:1.75}
+.about-lead em{font-style:normal;color:var(--gold)}
+.about-body{margin-top:24px;color:var(--ink-soft);font-size:.95rem;max-width:480px}
+.fact-list{border-top:1px solid var(--gold)}
+.fact{display:grid;grid-template-columns:96px 1fr;gap:18px;padding:17px 2px;border-bottom:1px solid var(--hairline-w);font-size:.9rem}
+.fact dt{font-weight:700;letter-spacing:.1em;color:var(--gold);font-size:.78rem;padding-top:2px}
+.fact dd{color:var(--ink-soft)}
+.fact dd strong{color:var(--ink);font-weight:600}
+/* statement quote */
+.statement{margin:110px auto 0;max-width:820px;text-align:center;position:relative;padding:0 10px}
+.statement::before{content:"“";font-family:var(--serif);font-size:5rem;color:var(--gold-dim);line-height:0;display:block;margin-bottom:34px}
+.statement p{font-family:var(--serif);font-weight:600;font-size:clamp(1.15rem,2.6vw,1.7rem);line-height:2}
+.statement p .g{color:var(--gold)}
+.statement .who{margin-top:30px;font-size:.78rem;letter-spacing:.3em;color:var(--ink-dim)}
+
+/* stats */
+.stats{margin-top:110px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:44px 20px;text-align:center;border-left:1px solid var(--hairline-w)}
+.stat:first-child{border-left:0}
+@media (max-width:760px){.stat:nth-child(3){border-left:0}.stat:nth-child(n+3){border-top:1px solid var(--hairline-w)}}
+.stat .num{font-family:var(--serif);font-weight:900;font-size:clamp(2.1rem,4.6vw,3.2rem);color:var(--ink);line-height:1.1}
+.stat .num .unit{font-size:.42em;color:var(--gold);margin-left:3px;font-weight:600}
+.stat .lbl{margin-top:12px;font-size:.8rem;color:var(--ink-soft)}
+/* awards strip */
+.awards{margin-top:70px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media (max-width:700px){.awards{grid-template-columns:1fr}}
+.award{border-top:1px solid var(--gold);padding-top:22px}
+.award .a-tag{font-size:.68rem;letter-spacing:.3em;color:var(--gold);font-weight:700}
+.award h4{font-family:var(--serif);font-weight:600;font-size:1.08rem;margin:12px 0 8px;line-height:1.6}
+.award p{font-size:.84rem;color:var(--ink-soft)}
+
+/* ============ EXHIBIT (project) ============ */
+.exhibit{padding:0;position:relative}
+.ex-cover{min-height:88svh;display:flex;flex-direction:column;justify-content:center;
+  padding:130px 6vw 110px;position:relative;overflow:hidden;border-top:1px solid var(--hairline)}
+.ex-cover .rn{font-family:var(--serif);font-weight:900;font-size:clamp(6rem,20vw,17rem);line-height:.9;
+  color:transparent;-webkit-text-stroke:1px rgba(232,163,61,.22);position:absolute;right:2vw;top:10%;
+  pointer-events:none;user-select:none}
+.ex-cover .ex-eyebrow{font-size:.72rem;letter-spacing:.44em;color:var(--gold);font-weight:600;margin-bottom:30px}
+.ex-cover h2{font-family:var(--serif);font-weight:900;font-size:clamp(2.2rem,6vw,4.6rem);line-height:1.3;max-width:820px}
+.ex-cover .ex-sub{margin-top:28px;color:var(--ink-soft);max-width:560px;font-size:clamp(.92rem,1.5vw,1.02rem)}
+.ex-cover .chips{margin-top:44px;display:flex;gap:12px;flex-wrap:wrap}
+.ex-cover .chips span{border:1px solid var(--hairline);padding:9px 20px;font-size:.76rem;letter-spacing:.1em;
+  color:var(--ink-soft);font-weight:600}
+.ex-body{padding:0 6vw 140px}
+.ex-body .wrap{max-width:var(--max);margin:0 auto}
+
+/* plate label — like a museum caption */
+.plate-lbl{display:flex;align-items:baseline;gap:16px;margin:110px 0 14px;border-bottom:1px solid var(--hairline);padding-bottom:14px}
+.plate-lbl .no{font-family:var(--serif);font-weight:900;color:var(--gold);font-size:1rem;letter-spacing:.1em}
+.plate-lbl h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.2rem,2.6vw,1.7rem);letter-spacing:-.01em}
+.plate-desc{color:var(--ink-soft);font-size:.94rem;max-width:660px;margin-bottom:48px}
+.plate-desc b,.plate-desc strong{color:var(--ink);font-weight:600}
+
+/* research cards */
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--hairline-w);border-left:1px solid var(--hairline-w)}
+@media (max-width:820px){.rgrid{grid-template-columns:1fr}}
+.rcell{padding:34px 30px 40px;border-right:1px solid var(--hairline-w);border-bottom:1px solid var(--hairline-w)}
+.rcell .rc-num{font-size:.68rem;letter-spacing:.3em;color:var(--gold);font-weight:700;margin-bottom:16px}
+.rcell h4{font-family:var(--serif);font-weight:600;font-size:1.12rem;margin-bottom:12px}
+.rcell p{font-size:.9rem;color:var(--ink-soft)}
+.rcell p strong{color:var(--ink);font-weight:600}
+
+/* finding rows */
+.finding{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;
+  padding:22px 2px;border-bottom:1px solid var(--hairline-w)}
+.finding:first-of-type{border-top:1px solid var(--hairline)}
+.finding .f-a{font-size:.96rem;color:var(--ink-soft)}
+.finding .f-mid{color:var(--gold);font-family:var(--serif);font-weight:900}
+.finding .f-b{font-family:var(--serif);font-weight:600;color:var(--gold);font-size:1rem;text-align:right}
+@media (max-width:700px){.finding{grid-template-columns:1fr}.finding .f-mid{display:none}.finding .f-b{text-align:left}}
+
+/* positioning */
+.pos{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media (max-width:840px){.pos{grid-template-columns:1fr}}
+.pos-canvas{position:relative;aspect-ratio:1/1;max-width:360px;margin:0 auto;width:100%}
+.pos-axis{position:absolute;background:var(--hairline)}
+.pos-axis.h{left:0;right:0;top:50%;height:1px}
+.pos-axis.v{top:0;bottom:0;left:50%;width:1px}
+.pos-lbl{position:absolute;font-size:.65rem;letter-spacing:.12em;color:var(--ink-dim);font-weight:600;white-space:nowrap}
+.pos-lbl.top{top:-6px;left:50%;transform:translate(-50%,-100%)}
+.pos-lbl.bottom{bottom:-6px;left:50%;transform:translate(-50%,100%)}
+.pos-lbl.left{left:0;top:50%;transform:translate(0,-170%)}
+.pos-lbl.right{right:0;top:50%;transform:translate(0,-170%)}
+.pos-item{position:absolute;transform:translate(-50%,-50%);font-size:.7rem;color:var(--ink-soft);
+  border:1px solid var(--hairline-w);background:var(--bg-2);padding:4px 12px;white-space:nowrap}
+.pos-item.hero-pos{background:var(--gold);border-color:var(--gold);color:#141008;font-weight:800;font-size:.78rem}
+.pos-note h4{font-family:var(--serif);font-weight:600;font-size:1.2rem;margin-bottom:14px}
+.pos-note p{font-size:.9rem;color:var(--ink-soft)}
+.pos-note p+p{margin-top:12px}
+.pos-note .hl{color:var(--gold)}
+.pos-note strong{color:var(--ink);font-weight:600}
+
+/* main concept banner */
+.concept{margin:110px 0 60px;text-align:center;padding:70px 24px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);position:relative}
+.concept .c-lbl{font-size:.68rem;letter-spacing:.44em;color:var(--gold);font-weight:700;margin-bottom:26px}
+.concept h3{font-family:var(--serif);font-weight:900;font-size:clamp(1.35rem,3.4vw,2.3rem);line-height:1.6}
+.concept h3 .g{color:var(--gold)}
+.concept p{margin-top:20px;color:var(--ink-soft);font-size:.92rem;max-width:640px;margin-left:auto;margin-right:auto}
+
+/* gallery figures */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+@media (max-width:840px){.gallery{grid-template-columns:1fr}}
+figure.ex-fig{margin:0}
+.frame{overflow:hidden;background:var(--bg-3);border:1px solid var(--hairline-w)}
+.frame img{width:100%;height:auto;transform:scale(1.02)}
+html.js .kb .frame img{animation:kb 18s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(-1.2%,1.2%)}}
+@media (prefers-reduced-motion:reduce){html.js .kb .frame img{animation:none}}
+figcaption{margin-top:16px}
+figcaption .fc-no{font-family:var(--serif);color:var(--gold);font-weight:900;font-size:.86rem;letter-spacing:.14em}
+figcaption h4{font-family:var(--serif);font-weight:600;font-size:1.05rem;margin:8px 0 8px}
+figcaption p{font-size:.86rem;color:var(--ink-soft)}
+figcaption p strong{color:var(--ink);font-weight:600}
+
+/* business model row */
+.bm{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--hairline-w);border-left:1px solid var(--hairline-w);margin-top:60px}
+@media (max-width:840px){.bm{grid-template-columns:1fr}}
+.bm .cell{padding:32px 28px 38px;border-right:1px solid var(--hairline-w);border-bottom:1px solid var(--hairline-w)}
+.bm .cell .tag{font-family:var(--serif);font-weight:900;color:var(--gold);font-size:1.3rem;margin-bottom:14px}
+.bm .cell h4{font-weight:700;font-size:1rem;margin-bottom:10px}
+.bm .cell p{font-size:.86rem;color:var(--ink-soft)}
+.bm .cell p strong{color:var(--ink);font-weight:600}
+
+/* full-bleed image moment */
+.bleed{margin:110px calc(-6vw) 0;position:relative}
+@media (max-width:760px){.bleed{margin:80px -6vw 0}}
+.bleed .frame{border-left:0;border-right:0}
+.bleed figcaption{padding:0 6vw;max-width:calc(var(--max) + 12vw);margin:18px auto 0}
+
+/* UT table */
+.ut{display:grid;grid-template-columns:1fr 1.4fr 1fr;border-top:1px solid var(--hairline);gap:0}
+@media (max-width:760px){.ut{grid-template-columns:1fr}}
+.ut-col{padding:28px 22px 34px;border-left:1px solid var(--hairline-w)}
+.ut-col:first-child{border-left:0;padding-left:2px}
+@media (max-width:760px){.ut-col{border-left:0;padding-left:2px;border-bottom:1px solid var(--hairline-w)}}
+.ut-tag{font-size:.7rem;letter-spacing:.3em;color:var(--gold);font-weight:700;display:block;margin-bottom:16px}
+.ut-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ut-col li{font-size:.88rem;color:var(--ink-soft);padding-left:18px;position:relative}
+.ut-col li::before{content:"—";position:absolute;left:0;color:var(--gold-dim)}
+
+/* survey chips + chart */
+.mini{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px}
+.mini-chip{border:1px solid var(--hairline-w);padding:9px 20px;font-size:.84rem;color:var(--ink-soft)}
+.mini-chip b{color:var(--gold);font-weight:800;margin-right:8px;font-family:var(--serif)}
+.chart{border-top:1px solid var(--hairline)}
+.chart-row{display:grid;grid-template-columns:minmax(140px,240px) 1fr 60px;gap:18px;align-items:center;
+  padding:16px 0;border-bottom:1px solid var(--hairline-w)}
+@media (max-width:640px){.chart-row{grid-template-columns:1fr 60px}.chart-row .q{grid-column:1/-1}}
+.chart-row .q{font-size:.86rem;color:var(--ink-soft)}
+.chart-row .track{height:6px;background:rgba(236,231,221,.08);overflow:hidden}
+.chart-row .fill{height:100%;background:linear-gradient(90deg,var(--gold-soft),var(--gold));width:var(--w,0%);transition:width 1.4s var(--e-out)}
+html.js .chart-row .fill{width:0}
+html.js .chart.go .fill{width:var(--w,0%)}
+.chart-row .pct{font-family:var(--serif);font-weight:900;color:var(--gold);text-align:right;font-size:.95rem}
+
+/* principle rows reuse .finding */
+
+/* design cards */
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--hairline-w);border-left:1px solid var(--hairline-w)}
+@media (max-width:820px){.dgrid{grid-template-columns:1fr}}
+.dgrid .rcell h4{font-size:1.08rem}
+
+/* 96% moment */
+.big96{margin:120px 0 0;text-align:center;padding:90px 24px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
+  background:radial-gradient(50% 60% at 50% 40%,rgba(232,163,61,.08),transparent 70%)}
+.big96 .n{font-family:var(--serif);font-weight:900;font-size:clamp(5rem,17vw,12rem);line-height:1;color:var(--gold)}
+.big96 .n .u{font-size:.34em}
+.big96 h4{font-family:var(--serif);font-weight:600;margin-top:18px;font-size:clamp(1rem,2.2vw,1.35rem)}
+.big96 p{margin-top:14px;color:var(--ink-soft);font-size:.92rem;max-width:560px;margin-left:auto;margin-right:auto}
+.big96 p b{color:var(--ink)}
+.big96 a{color:var(--gold);font-weight:600}
+
+/* capability */
+.cap-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:70px}
+@media (max-width:880px){.cap-grid{grid-template-columns:1fr}}
+.cap{border-top:1px solid var(--gold);padding-top:26px;display:flex;flex-direction:column}
+.cap .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.cap .tags span{border:1px solid var(--hairline);color:var(--gold);font-size:.7rem;letter-spacing:.08em;padding:6px 14px;font-weight:600}
+.cap h3{font-family:var(--serif);font-weight:900;font-size:1.5rem;line-height:1.4;margin-bottom:6px}
+.cap .cap-sub{font-size:.84rem;color:var(--ink-soft);margin-bottom:18px}
+.cap>p{font-size:.9rem;color:var(--ink-soft)}
+.cap>p strong{color:var(--ink);font-weight:600}
+.cap .frame{margin:24px 0}
+.cap ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.cap li{font-size:.88rem;color:var(--ink-soft);padding-left:22px;position:relative}
+.cap li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.cap li strong{color:var(--ink);font-weight:600}
+.cap .prize{margin-top:auto;padding-top:26px}
+.prize-chip{display:inline-block;border:1px solid var(--hairline);color:var(--gold);font-size:.8rem;font-weight:600;padding:10px 18px}
+.cap .link{display:inline-block;margin-top:14px;font-size:.82rem;font-weight:600;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim)}
+.cap .link:hover{border-bottom-color:var(--gold)}
+
+/* patent */
+.patent{margin-top:110px;border:1px solid var(--hairline);padding:60px 6vw;position:relative;overflow:hidden;background:var(--bg-2)}
+@media (min-width:1100px){.patent{padding:60px 64px}}
+.patent::before{content:"PATENT";position:absolute;right:-8px;bottom:-34px;font-family:var(--serif);font-weight:900;
+  font-size:clamp(4rem,10vw,7.5rem);color:transparent;-webkit-text-stroke:1px rgba(232,163,61,.12);pointer-events:none;letter-spacing:.02em}
+.patent .pt-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.patent .pt-badge{border:1px solid var(--hairline);color:var(--gold);font-size:.72rem;letter-spacing:.1em;font-weight:600;padding:8px 16px}
+.patent h3{font-family:var(--serif);font-weight:900;font-size:clamp(1.4rem,3.2vw,2rem)}
+.patent h3 .en{font-size:.6em;color:var(--ink-soft);font-weight:600;margin-left:10px}
+.patent .pt-sub{margin-top:14px;color:var(--ink-soft);font-size:.9rem;max-width:680px}
+.patent .pt-why{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin:38px 0;
+  border-top:1px solid var(--hairline-w);border-bottom:1px solid var(--hairline-w);padding:32px 0}
+@media (max-width:840px){.patent .pt-why{grid-template-columns:1fr;gap:26px}}
+.patent .lbl{font-size:.68rem;letter-spacing:.34em;font-weight:700;margin-bottom:14px}
+.patent .lbl.q{color:var(--ink-dim)}
+.patent .lbl.a{color:var(--gold)}
+.patent .pt-why p{font-size:.92rem;color:var(--ink-soft);line-height:1.85}
+.patent .pt-why p strong{color:var(--ink);font-weight:600}
+.patent .pt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+@media (max-width:840px){.patent .pt-grid{grid-template-columns:1fr}}
+.patent .pt-item h5{font-family:var(--serif);font-weight:600;font-size:.98rem;margin-bottom:10px;color:var(--ink)}
+.patent .pt-item{border-top:1px solid var(--hairline);padding-top:18px}
+.patent .pt-item p{font-size:.83rem;color:var(--ink-soft)}
+.patent .pt-item b{color:var(--ink);font-weight:600}
+.patent .pt-meta{margin-top:34px;font-size:.74rem;color:var(--ink-dim);letter-spacing:.02em}
+
+/* ============ CONTACT ============ */
+footer{padding:150px 6vw 70px;text-align:center;border-top:1px solid var(--hairline);position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;inset:auto 0 -40%;height:80%;pointer-events:none;
+  background:radial-gradient(50% 60% at 50% 100%,rgba(232,163,61,.13),transparent 70%)}
+footer .f-eyebrow{font-size:.7rem;letter-spacing:.5em;color:var(--gold);font-weight:600;margin-bottom:30px}
+footer h2{font-family:var(--serif);font-weight:900;font-size:clamp(2rem,5.6vw,4rem);line-height:1.4}
+footer p.msg{margin-top:22px;color:var(--ink-soft);font-size:.95rem}
+.contact-row{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-top:50px;position:relative;z-index:2}
+.contact-row a{display:inline-flex;align-items:center;padding:15px 32px;border:1px solid var(--hairline);
+  font-size:.9rem;font-weight:600;text-decoration:none;color:var(--ink);letter-spacing:.04em;
+  transition:background .3s,color .3s,border-color .3s}
+.contact-row a:hover{background:var(--gold);color:#141008;border-color:var(--gold)}
+footer .fin{margin-top:90px;font-size:.68rem;color:var(--ink-dim);letter-spacing:.24em}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+<div id="bar"></div>
+
+<nav class="rail" aria-label="주요 메뉴">
+  <a class="r-name" href="#top">SONG YUNA</a>
+  <div class="r-idx">
+    <a href="#about" data-sec="about">A<span class="lbl">bout</span></a>
+    <a href="#p01" data-sec="p01">01</a>
+    <a href="#p02" data-sec="p02">02</a>
+    <a href="#p03" data-sec="p03">03</a>
+    <a href="#contact" data-sec="contact">✉</a>
+  </div>
+  <span class="r-foot">PORTFOLIO 2025</span>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="big-year" aria-hidden="true">2025</div>
+  <div class="kicker rv on">SERVICE DESIGN PORTFOLIO — DARK EDITION</div>
+  <h1 class="rv on">사람의 마음을 읽고,<br><span class="g">경계를 넘어</span> 설계합니다.</h1>
+  <p class="sub rv on d1">새로운 시작을 함께하고 싶은 서비스 디자이너, <b>송유나</b>입니다.<br>
+  리서치로 발견한 진짜 문제를 기술과 디자인으로 풀어냅니다.</p>
+  <div class="roles rv on d2">
+    <span>SERVICE DESIGN</span><span>UX RESEARCH</span><span>AI × DESIGN</span>
+  </div>
+  <div class="h-scroll">SCROLL</div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-eyebrow">ABOUT</div>
+      <h2 class="sec-title">공감에서 출발해,<br>실행으로 증명합니다</h2>
+    </div>
+    <div class="about-grid">
+      <div class="rv">
+        <p class="about-lead">리서치로 발견한 진짜 문제를, 기술과 디자인으로 풀어냅니다.
+        <em>경계를 넘는 행동력</em>이 저의 디자인 방법론입니다.</p>
+        <p class="about-body">성신여자대학교에서 서비스디자인공학을 주전공으로, AI를 복수전공으로 공부하며
+        사용자 경험과 기술 사이의 다리를 놓는 연습을 이어가고 있습니다.</p>
+      </div>
+      <dl class="fact-list rv d1">
+        <div class="fact"><dt>이름</dt><dd><strong>송유나</strong> SONG YUNA</dd></div>
+        <div class="fact"><dt>학력</dt><dd>성신여자대학교 <strong>서비스디자인공학과</strong> 주전공 · <strong>AI학과</strong> 복수전공</dd></div>
+        <div class="fact"><dt>활동</dt><dd>유네스코 세계유산 지킴이 · 국제학생회 · 산학협력 프로젝트 WillChair</dd></div>
+        <div class="fact"><dt>스킬</dt><dd><strong>Figma</strong> · Illustrator · Premiere Pro · PowerPoint</dd></div>
+        <div class="fact"><dt>어학</dt><dd>OPIC <strong>IH</strong></dd></div>
+      </dl>
+    </div>
+
+    <div class="statement rv">
+      <p>직접 만나고, 직접 겪어보고, 직접 만듭니다.<br>
+      <span class="g">휠체어에 앉아 도시를 건너고,</span><br>
+      운전자 130명의 목소리를 모으고,<br>
+      AI로 만든 동요를 궁궐에서 불렀습니다.</p>
+      <div class="who">MY WAY OF WORKING</div>
+    </div>
+
+    <div class="stats rv">
+      <div class="stat"><div class="num">130<span class="unit">+명</span></div><div class="lbl">리서치 참여자</div></div>
+      <div class="stat"><div class="num">96<span class="unit">%</span></div><div class="lbl">리디자인 후 만족도</div></div>
+      <div class="stat"><div class="num">1<span class="unit">건</span></div><div class="lbl">특허 출원 · 발명자 등재</div></div>
+      <div class="stat"><div class="num">2<span class="unit">회</span></div><div class="lbl">전국 단위 수상</div></div>
+    </div>
+
+    <div class="awards">
+      <div class="award rv"><span class="a-tag">AWARD — 2024</span>
+        <h4>허위정보 대응 아이디어 공모전 우수상</h4>
+        <p>KAIST 주관 · 플랫폼 개발 부문</p></div>
+      <div class="award rv d1"><span class="a-tag">AWARD — 2025</span>
+        <h4>청년 유네스코 세계유산지킴이 국가유산진흥원장상</h4>
+        <p>국가유산청 주관 · 활동경진대회</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXHIBIT 01 : WILLCHAIR ============ -->
+<article class="exhibit" id="p01">
+  <div class="ex-cover">
+    <div class="rn" aria-hidden="true">Ⅰ</div>
+    <div class="ex-eyebrow rv">EXHIBIT Ⅰ — APPROACH</div>
+    <h2 class="rv">경계를 넘어,<br>소비자를 공감하다</h2>
+    <p class="ex-sub rv d1">교통약자 베리어프리 지도 앱 WillChair — 커뮤니티 서비스 기획 &amp; 비즈니스 모델, 산학협력 프로젝트</p>
+    <div class="chips rv d2"><span>유저 리서치</span><span>커뮤니티 서비스 설계</span><span>비즈니스 모델 구상</span></div>
+  </div>
+  <div class="ex-body"><div class="wrap">
+
+    <div class="plate-lbl rv" style="margin-top:70px"><span class="no">Ⅰ · 1</span><h3>책상이 아닌, 현장에서 시작한 리서치</h3></div>
+    <p class="plate-desc rv">데이터 너머의 마음을 읽기 위해 직접 움직였습니다. 포스터를 만들어 인터뷰이를 모집하고,
+    콜드메일로 인플루언서를 섭외하고, 휠체어에 앉아 하루를 이동해봤습니다.</p>
+    <div class="rgrid rv">
+      <div class="rcell"><div class="rc-num">RESEARCH 01 — 심층 인터뷰</div>
+        <h4>교통약자를 직접 만나다</h4>
+        <p>모집 포스터를 직접 디자인해 인터뷰이를 모으고, 대면·화상·전화 등 <strong>상대가 편한 방식</strong>으로 진행했습니다.
+        장애의 정도와 부위에 따라 필요한 정보가 서로 다르다는 사실을 확인했고, 이후 맞춤형 필터 설계의 근거가 됐습니다.</p></div>
+      <div class="rcell"><div class="rc-num">RESEARCH 02 — CEO 인터뷰</div>
+        <h4>WillChair 조준섭 대표를 만나다</h4>
+        <p>서비스의 내부 데이터와 운영 현황, 사업 방향을 창업자에게 직접 들었습니다.
+        <strong>기업의 현실적인 제약과 자원</strong> 위에서 기획해야 실행 가능한 제안이 된다고 믿기 때문입니다.</p></div>
+      <div class="rcell"><div class="rc-num">RESEARCH 03 — 콜드메일 섭외</div>
+        <h4>인플루언서에게 직접 연락하다</h4>
+        <p>휠체어 일상을 콘텐츠로 기록해온 교통약자 인플루언서에게 콜드메일을 보내 인터뷰를 성사시켰습니다.
+        수년간 축적된 <strong>구체적인 이동 경험담</strong>은 어떤 데스크 리서치보다 밀도가 높았습니다.</p></div>
+      <div class="rcell"><div class="rc-num">RESEARCH 04 — 롤플레잉</div>
+        <h4>휠체어에 앉아 도시를 건너다</h4>
+        <p>직접 휠체어를 타고 하루를 이동했습니다. 턱 하나, 경사 하나가 경로 전체를 바꾼다는 것 —
+        <strong>소비자의 일상을 몸으로 경험</strong>하고 나서야 보이는 문제였습니다. 경쟁사 분석과 SWOT은 그 위에서 진행했습니다.</p></div>
+    </div>
+
+    <div class="plate-lbl rv"><span class="no">Ⅰ · 2</span><h3>리서치가 알려준 세 가지 사실</h3></div>
+    <p class="plate-desc rv">발견은 그대로 설계 기준이 됐습니다. 이후 모든 화면과 비즈니스 모델은 이 세 문장 위에 서 있습니다.</p>
+    <div class="rv">
+      <div class="finding"><div class="f-a">장애의 정도와 부위에 따라 필요한 정보가 전부 다르다</div><div class="f-mid">→</div><div class="f-b">Solution 01 — 맞춤형 필터</div></div>
+      <div class="finding"><div class="f-a">'갈 수 있는 곳'을 알아도 '가는 방법'이 막히면 소용없다</div><div class="f-mid">→</div><div class="f-b">Solution 02 — 이동성 통합</div></div>
+      <div class="finding"><div class="f-a">가장 정확한 접근성 정보는 그 동네에 사는 사람에게서 나온다</div><div class="f-mid">→</div><div class="f-b">Solution 03 — 지역 커뮤니티</div></div>
+    </div>
+
+    <div class="plate-lbl rv"><span class="no">Ⅰ · 3</span><h3>시장 속 WillChair의 자리 찾기</h3></div>
+    <p class="plate-desc rv">지역 특화도와 소통 방향, 두 축으로 시장을 다시 그렸습니다.</p>
+    <div class="pos rv">
+      <div class="pos-canvas">
+        <div class="pos-axis h"></div><div class="pos-axis v"></div>
+        <span class="pos-lbl top">지역 특화 높음</span>
+        <span class="pos-lbl bottom">지역 특화 낮음</span>
+        <span class="pos-lbl left">일방향 소통</span>
+        <span class="pos-lbl right">쌍방향 소통</span>
+        <span class="pos-item" style="left:30%;top:72%">카카오맵</span>
+        <span class="pos-item" style="left:22%;top:60%">네이버 지도</span>
+        <span class="pos-item" style="left:68%;top:38%">당근마켓</span>
+        <span class="pos-item" style="left:60%;top:55%">Nextdoor</span>
+        <span class="pos-item hero-pos" style="left:76%;top:16%">WillChair</span>
+      </div>
+      <div class="pos-note">
+        <h4>하이퍼로컬 × 쌍방향, 비어 있던 자리</h4>
+        <p>기존 지도 서비스는 넓게 알지만 <span class="hl">'현재 위치에서 바로 필요한 정보'</span>에는 약했습니다.
+        지역 커뮤니티 서비스는 소통은 활발하지만 이동 접근성 정보가 없었습니다.</p>
+        <p>WillChair는 사용자의 <strong>자발적 참여</strong>로 채워지는 하이퍼로컬 접근성 지도로, 그 빈자리를 정확히 겨냥합니다.</p>
+        <p><strong>필수 포지셔닝</strong>은 '현재 위치에서 바로 필요한 정보', <strong>차별적 포지셔닝</strong>은 사용자가 기여하는
+        쌍방향 데이터 구조 — 이 두 축이 서비스가 지켜야 할 최소선과 이겨야 할 지점을 정의합니다.</p>
+      </div>
+    </div>
+
+    <div class="concept rv">
+      <div class="c-lbl">MAIN CONCEPT</div>
+      <h3>“교통약자의 동네여행을 함께하는<br><span class="g">평생 외출 동반자</span>”</h3>
+      <p>활성화 전략은 거주자와 방문자의 쌍방향 소통 — 서로의 길잡이가 되어주는 교류가 곧 서비스의 데이터가 됩니다.
+      소통이 데이터가 되고(데이터 수집), 축적된 접근성 데이터는 공공기관 판매 등으로 수익화되는(데이터 활용) 선순환 구조입니다.</p>
+    </div>
+
+    <div class="gallery">
+      <figure class="ex-fig kb rv">
+        <div class="frame"><img src="assets/wc-sol1.jpg" alt="WillChair 맞춤형 필터 화면" loading="lazy"></div>
+        <figcaption><span class="fc-no">SOLUTION 01</span>
+          <h4>나에게 맞춘 접근성 정보</h4>
+          <p>장애 정도와 부위에 따라 필요한 정보는 다릅니다. <strong>경사로 · 엘리베이터 · 전용주차장 · 화장실</strong> 등
+          맞춤형 필터로 '내가 갈 수 있는 곳'을 바로 보여줍니다.</p></figcaption>
+      </figure>
+      <figure class="ex-fig kb rv d1">
+        <div class="frame"><img src="assets/wc-sol2.jpg" alt="WillChair 이동성·접근성 통합 화면" loading="lazy"></div>
+        <figcaption><span class="fc-no">SOLUTION 02</span>
+          <h4>이동성 + 접근성의 통합</h4>
+          <p>목적지 정보와 이동 수단을 한 화면에. <strong>대중교통 31분 vs 콜택시 13분</strong>을 비교하고
+          그 자리에서 바로 호출까지 이어집니다.</p></figcaption>
+      </figure>
+      <figure class="ex-fig kb rv d2">
+        <div class="frame"><img src="assets/wc-sol3.jpg" alt="WillChair 지역 커뮤니티 화면" loading="lazy"></div>
+        <figcaption><span class="fc-no">SOLUTION 03</span>
+          <h4>지역 기반 커뮤니티</h4>
+          <p>실시간 동네 소식과 큐레이션으로 앱에 머무를 이유를 만듭니다. 소통이 데이터가 되고,
+          데이터가 다시 서비스가 되는 <strong>락인 구조</strong>입니다.</p></figcaption>
+      </figure>
+    </div>
+
+    <div class="plate-lbl rv"><span class="no">Ⅰ · 4</span><h3>세 갈래의 비즈니스 모델</h3></div>
+    <div class="bm rv" style="margin-top:0">
+      <div class="cell"><div class="tag">B2C</div><h4>전동휠체어 서비스</h4>
+        <p>개인 대상 전동휠체어 전문 정보·관리 서비스. <strong>Why?</strong> 이용자의 이동 패턴과 접근성 니즈를
+        가장 깊이 아는 서비스가, 전동휠체어라는 가장 큰 구매 결정도 가장 잘 도울 수 있기 때문입니다.</p></div>
+      <div class="cell"><div class="tag">B2B2C</div><h4>휠체어 통합 판매 스토어</h4>
+        <p>개인별 <strong>정부 수혜 정보를 연계</strong>한 휠체어 통합 스토어. <strong>Why?</strong> 지원금 제도가 흩어져 있어
+        구매를 포기하는 사용자가 많습니다. 수혜 정보 매칭부터 구매까지 한 흐름으로 정리하면 그 자체가 진입장벽 해소입니다.</p></div>
+      <div class="cell"><div class="tag">B2G</div><h4>장애인 콜택시 사업</h4>
+        <p>지자체 콜택시 재정비로 시작해 기업 서비스(B2B)로 확장. <strong>Why?</strong> WillChair에 쌓인 이동 수요 데이터는
+        지자체 배차 시스템을 재설계할 근거가 되고, 그 운영 노하우는 다시 기업용 서비스로 팔 수 있는 자산이 됩니다.</p></div>
+    </div>
+  </div></div>
+</article>
+
+<!-- ============ EXHIBIT 02 : NAVER NAVIGATION ============ -->
+<article class="exhibit" id="p02">
+  <div class="ex-cover">
+    <div class="rn" aria-hidden="true">Ⅱ</div>
+    <div class="ex-eyebrow rv">EXHIBIT Ⅱ — INSIGHT</div>
+    <h2 class="rv">집요하게 파고들어,<br>경험을 혁신하다</h2>
+    <p class="ex-sub rv d1">네이버 내비게이션 리디자인 — 130여 명의 목소리로 다시 설계한 주행 경험, HCI 실습 프로젝트</p>
+    <div class="chips rv d2"><span>UT 25명</span><span>설문 106명</span><span>만족도 96%</span></div>
+  </div>
+  <div class="ex-body"><div class="wrap">
+
+    <div class="plate-lbl rv" style="margin-top:70px"><span class="no">Ⅱ · 1</span><h3>왜 네이버 내비게이션이었나</h3></div>
+    <p class="plate-desc rv">시장은 이미 TMAP과 카카오내비가 나눠 가졌고, 운전자들은 "처음 쓰던 걸 바꾸지 않는" 관성 위에 있습니다.
+    후발주자인 네이버 내비가 선택받으려면 조금 나은 개선이 아니라 <strong>갈아탈 이유가 되는 다른 경험</strong>이 필요하다 —
+    이 가설에서 프로젝트를 시작했습니다.</p>
+
+    <div class="plate-lbl rv"><span class="no">Ⅱ · 2</span><h3>주행을 세 구간으로 쪼갠 UT 설계</h3></div>
+    <p class="plate-desc rv">25명의 참가자에게 실제 주행 시나리오를 부여하고, 경로 선택부터 '맥도날드 DT 경유지 추가',
+    주차 정보 탐색까지 과업별 수행 시간을 측정해 개선 전후를 비교했습니다.</p>
+    <div class="ut rv">
+      <div class="ut-col"><span class="ut-tag">출발 전</span><ul><li>도착지 설정</li><li>경로 선택</li></ul></div>
+      <div class="ut-col"><span class="ut-tag">주행 중</span><ul><li>2D 모드 변경</li><li>사고 상황 제보</li><li>전체 경로 확인</li><li>주행 중 전화 받기</li><li>경유지 추가 — 맥도날드 DT 시나리오</li></ul></div>
+      <div class="ut-col"><span class="ut-tag">도착 2분 전</span><ul><li>주차 정보 찾기</li></ul></div>
+    </div>
+
+    <div class="plate-lbl rv"><span class="no">Ⅱ · 3</span><h3>106명의 설문이 말해준 것</h3></div>
+    <p class="plate-desc rv">응답자의 63.5%가 20대 운전자, 55.3%가 TMAP 사용자였습니다. 익숙함의 관성과 화면 불편이 핵심 장벽이었습니다.</p>
+    <div class="mini rv">
+      <span class="mini-chip"><b>106명</b>설문 응답</span>
+      <span class="mini-chip"><b>63.5%</b>20대 운전자</span>
+      <span class="mini-chip"><b>55.3%</b>TMAP 사용 중</span>
+    </div>
+    <div class="chart rv">
+      <div class="chart-row"><span class="q">"처음 쓰던 내비를 바꾸지 않는다"</span>
+        <div class="track"><div class="fill" style="--w:40%"></div></div><span class="pct">40%</span></div>
+      <div class="chart-row"><span class="q">"네이버 내비, 화면이 불편해서 안 쓴다"</span>
+        <div class="track"><div class="fill" style="--w:44%"></div></div><span class="pct">43.8%</span></div>
+      <div class="chart-row"><span class="q">"메뉴가 깊고 요소가 불명확하다"</span>
+        <div class="track"><div class="fill" style="--w:24%"></div></div><span class="pct">24%</span></div>
+    </div>
+
+    <div class="plate-lbl rv"><span class="no">Ⅱ · 4</span><h3>숫자 뒤의 진짜 문제, 그리고 원칙</h3></div>
+    <p class="plate-desc rv">불만의 표현은 제각각이지만 원인은 하나로 모였습니다 — <strong>운전 중에 화면을 보고 눌러야 한다는 것.</strong>
+    깊은 메뉴도, 불명확한 요소도 결국 '주행 중 시각 조작'이라는 전제에서 나온 문제였습니다.
+    그래서 개선이 아니라 전제를 바꾸기로 했습니다: 조작 자체를 없앤다.</p>
+    <div class="rv">
+      <div class="finding"><div class="f-a">깊은 메뉴 트리</div><div class="f-mid">→</div><div class="f-b">최소 터치로 조작</div></div>
+      <div class="finding"><div class="f-a">불필요한 기능의 나열</div><div class="f-mid">→</div><div class="f-b">과감한 제거</div></div>
+      <div class="finding"><div class="f-a">정보 제공 방식의 비일관성</div><div class="f-mid">→</div><div class="f-b">방식 통일</div></div>
+      <div class="finding"><div class="f-a">세분화되어 흩어진 정보</div><div class="f-mid">→</div><div class="f-b">맞춤형 필터링</div></div>
+    </div>
+
+    <div class="concept rv">
+      <div class="c-lbl">DESIGN CONCEPT</div>
+      <h3>“운전 중 조작을 없애는<br><span class="g">완전 음성 내비게이션</span>”</h3>
+      <p>#안전성 #유익성 #편의성 #쉬운 사용</p>
+    </div>
+
+    <div class="dgrid rv">
+      <div class="rcell"><div class="rc-num">DESIGN 01</div><h4>내비가 먼저 말을 겁니다</h4>
+        <p>"오늘은 어디로 갈까요?", "몇 번째로 갈까요?" — 사용자가 명령어를 외울 필요 없는
+        <strong>제시형 안내어</strong>로 대화를 설계했습니다.</p></div>
+      <div class="rcell"><div class="rc-num">DESIGN 02</div><h4>모든 기능, 3턴 이내</h4>
+        <p>경유지 추가, 주차장 추천, 가게 검색까지 — 어떤 기능도 <strong>대화 3턴 안에</strong> 끝나도록 플로우를 압축했습니다.</p></div>
+      <div class="rcell"><div class="rc-num">DESIGN 03</div><h4>네이버 생태계와의 연결</h4>
+        <p>기존 네이버 서비스와의 연동으로 검색-예약-이동이 하나의 흐름으로 이어집니다.</p></div>
+      <div class="rcell"><div class="rc-num">DESIGN 04</div><h4>운전이 즐거워지는 장치</h4>
+        <p><strong>셀럽 음성</strong>과 캐릭터 아이콘 커스터마이징으로 안전한 기능에 애착을 더했습니다.</p></div>
+    </div>
+
+    <div class="bleed">
+      <figure class="ex-fig kb rv">
+        <div class="frame"><img src="assets/nv-voice.jpg" alt="음성 내비게이션 홈 — 오늘은 어디로 갈까요?" loading="lazy"></div>
+        <figcaption><span class="fc-no">FIG. Ⅱ-1</span>
+          <h4>"오늘은 어디로 갈까요?"</h4>
+          <p>내비가 먼저 묻고, 운전자는 대답만 합니다. 목적지 선택("몇 번째로 갈까요?" — "2번"), "이순신 검색해줘" 같은 음성 검색,
+          주행 중 맥도날드 DT 경유지 추가, 요금까지 보여주는 주차장 추천까지 — 전 과정이 손을 쓰지 않는 대화로 이어지도록
+          화면과 안내어를 함께 설계했습니다.</p></figcaption>
+      </figure>
+    </div>
+    <div class="bleed" style="margin-top:70px">
+      <figure class="ex-fig kb rv">
+        <div class="frame"><img src="assets/nv-drive.jpg" alt="주행 중 화면 — 경유지 추가, 음성 검색, 주차장 추천" loading="lazy"></div>
+        <figcaption><span class="fc-no">FIG. Ⅱ-2</span>
+          <h4>주행 중 — 경유지 추가 · 음성 검색 · 주차장 추천</h4></figcaption>
+      </figure>
+    </div>
+
+    <div class="big96 rv">
+      <div class="n">96<span class="u">%</span></div>
+      <h4>리디자인 후 사용성 조사 만족도</h4>
+      <p>개선된 프로토타입으로 <b>동일한 과업을 다시 측정</b>한 사용성 조사에서 이전 대비 96%의 만족도를 얻으며,
+      '음성 중심 내비게이션'이라는 방향을 숫자로 검증했습니다.<br>
+      <a href="https://youtu.be/lGnDjBUGnDw" target="_blank" rel="noopener">시연 영상 보기 ↗</a></p>
+    </div>
+  </div></div>
+</article>
+
+<!-- ============ EXHIBIT 03 : CAPABILITY ============ -->
+<article class="exhibit" id="p03">
+  <div class="ex-cover">
+    <div class="rn" aria-hidden="true">Ⅲ</div>
+    <div class="ex-eyebrow rv">EXHIBIT Ⅲ — CAPABILITY</div>
+    <h2 class="rv">기술의 속도에 맞춰,<br>아이디어를 실현하다</h2>
+    <p class="ex-sub rv d1">AI와 데이터를 도구 삼아 기획을 결과물로 — 두 번의 전국 단위 수상과 한 건의 특허 출원으로 이어간 프로젝트들</p>
+    <div class="chips rv d2"><span>KAIST 공모전 우수상</span><span>국가유산진흥원장상</span><span>특허 출원</span></div>
+  </div>
+  <div class="ex-body"><div class="wrap">
+
+    <div class="plate-lbl rv" style="margin-top:70px"><span class="no">Ⅲ · 1</span><h3>기획을 결과물로 증명한 세 개의 기록</h3></div>
+    <p class="plate-desc rv">아이디어에서 멈추지 않고 구현과 검증까지 — 수상과 특허로 이어졌습니다.</p>
+
+    <div class="cap-grid" style="margin-top:0">
+      <div class="cap rv">
+        <div class="tags"><span>플랫폼 기획</span><span>AI 분석</span><span>정보 시각화</span></div>
+        <h3>Truthmarker</h3>
+        <div class="cap-sub">허위정보 원스텝 신고 플랫폼</div>
+        <p>기존 신고 플랫폼의 문제는 셋이었습니다 — <strong>복잡한 신고 절차</strong>, 제보하고 나면 깜깜무소식인
+        <strong>결과 확인의 비효율</strong>, 쌓이고도 버려지는 <strong>데이터 활용의 부재</strong>.
+        플랫폼의 내부 구조와 사용자 경험을 이 세 문제에서부터 다시 설계했고, 저는 내부 구조와 UX 설계를 담당했습니다.</p>
+        <div class="frame kb"><img src="assets/tm-app.jpg" alt="Truthmarker 홈과 원터치 하이라이터 신고 화면" loading="lazy"></div>
+        <ul>
+          <li>사진 위 허위 요소를 <strong>하이라이터로 칠하면 신고 끝</strong> — 원스텝 신고 구조</li>
+          <li>입력 정보 최소화로 처리 속도와 식별 정확성을 동시에 확보</li>
+          <li>축적된 신고 데이터로 <strong>실시간 허위정보 위험도</strong> 제공</li>
+          <li>"알고도 속는다" — 레벨·게이지로 배우는 허위정보 유형 학습 홈</li>
+        </ul>
+        <div class="prize"><span class="prize-chip">KAIST 허위정보 대응 공모전 · 플랫폼 개발 부문 우수상</span></div>
+      </div>
+      <div class="cap rv d1">
+        <div class="tags"><span>행사 기획</span><span>생성형 AI</span><span>홍보 마케팅</span></div>
+        <h3>우리의 자랑, 창덕궁</h3>
+        <div class="cap-sub">생성형 AI 문화유산 홍보 동요</div>
+        <p>창덕궁 고궁 청소년 문화학교를 직접 기획하고 주최했습니다. 생성형 AI로 만든 동요에
+        창덕궁 곳곳의 이야기를 가사로 녹여, 아이들이 노래와 율동으로 문화유산을 배우게 했습니다.</p>
+        <div class="frame kb"><img src="assets/cd-video.jpg" alt="우리의 자랑 창덕궁 — 행사 영상과 리릭 비디오" loading="lazy"></div>
+        <ul>
+          <li>AI 작곡·작사로 동요 <strong>'우리의 자랑, 창덕궁'</strong> 제작</li>
+          <li>가사 속 장소 정보로 참가자의 <strong>문화유산 이해도 향상</strong></li>
+          <li>'문화유산의 일상 속 향유'라는 주제를 체험형 프로그램으로 구현</li>
+          <li>기획력·교육적 효과·문화유산 가치 확산 기여를 인정받아 <strong>국가유산진흥원장상 수상</strong></li>
+        </ul>
+        <div class="prize">
+          <span class="prize-chip">국가유산청 세계유산지킴이 · 국가유산진흥원장상</span><br>
+          <a class="link" href="https://youtu.be/w0uiGq4I15I" target="_blank" rel="noopener">리릭 비디오 보기 ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="patent rv">
+      <div class="pt-badges">
+        <span class="pt-badge">특허 출원 · 공동 발명자</span>
+        <span class="pt-badge">산업통상자원부 R&amp;D 과제</span>
+      </div>
+      <h3>모듈형 돌봄 로봇<span class="en">Modular Care Robots</span></h3>
+      <p class="pt-sub">WillChair에서 확인한 이동약자의 문제의식을 하드웨어로 확장한 프로젝트.
+      리서치에서 출발한 아이디어를 지식재산으로 완성해, 성신여자대학교 산학협력단 명의로 출원하고 발명자로 등재되었습니다.</p>
+      <div class="pt-why">
+        <div><div class="lbl q">PROBLEM</div>
+          <p>혼자 지내는 노년층에게 정서적 고립과 이동의 어려움은 <strong>함께 찾아오는 문제</strong>입니다.
+          하지만 기존 제품들은 교감과 이동 보조 중 어느 한쪽만 담당할 뿐, 두 문제를 하나의 경험으로 풀어내는 돌봄 기기는 없었습니다.</p></div>
+        <div><div class="lbl a">ANSWER — 모듈형 구조</div>
+          <p>평소에는 감정을 읽고 반응하는 <strong>AI 헤드</strong>가 곁에서 교감하고, 외출할 때는 자율주행 바디와 합체해
+          <strong>의자이자 이동수단</strong>이 됩니다. 분리된 헤드가 앞서 길을 안내하면 바디가 따라오는 구조로,
+          정서적 돌봄과 이동 보조를 하나의 경험으로 연결한 점이 이 발명의 핵심입니다.</p></div>
+      </div>
+      <div class="pt-grid">
+        <div class="pt-item"><h5>정서적 고립을 푸는 AI 헤드</h5>
+          <p>비전 카메라로 표정과 행동을 읽어 감정 변화를 실시간 인식하고, 디스플레이로 감정을 표현하며 반응합니다.
+          표정을 <b>읽고 반응하는 교감</b>으로 혼자 있는 시간을 함께합니다.</p></div>
+        <div class="pt-item"><h5>외출을 망설이게 하는 문턱 제거</h5>
+          <p>멈추면 의자, 달리면 탈것. 접이식 등받이가 펼쳐져 지면까지 닿고 발판이 나와 <b>타고 내리는 과정까지</b>
+          자연스럽게 이어줍니다. 보호자 없이도 혼자 외출할 수 있습니다.</p></div>
+        <div class="pt-item"><h5>신뢰를 만드는 안전 설계</h5>
+          <p>팔걸이 아래 카메라가 바닥 장애물을 미리 읽고, 초음파 센서와 IMU가 거리와 자세를 지킵니다.
+          부드러운 소프트 로보틱스 소재의 외형까지, <b>안심하고 몸을 맡길 수 있도록</b> 설계했습니다.</p></div>
+      </div>
+      <p class="pt-meta">출원번호 10-2025-0204466 · 출원일 2025.12.19 · 출원인 성신여자대학교 연구 산학협력단 · 디지털융합디자인 전문인력양성사업(한국디자인진흥원)</p>
+    </div>
+  </div></div>
+</article>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <div class="f-eyebrow rv">CONTACT</div>
+  <h2 class="rv">새로운 시작,<br>함께하시겠어요?</h2>
+  <p class="msg rv d1">공감으로 시작해 실행으로 끝내는 디자이너, 송유나입니다.</p>
+  <div class="contact-row rv d2">
+    <a href="mailto:20221041@sungshin.ac.kr">20221041@sungshin.ac.kr</a>
+    <a href="tel:01038998592">010 . 3899 . 8592</a>
+  </div>
+  <p class="fin">© 2025 SONG YUNA — SERVICE DESIGN PORTFOLIO · DARK EDITION</p>
+</footer>
+
+</main>
+
+<script>
+(function(){
+"use strict";
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* scroll progress bar */
+var bar=document.getElementById('bar');
+addEventListener('scroll',function(){
+  var h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}
+});},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+/* chart fill */
+var fio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.isIntersecting){e.target.classList.add('go');fio.unobserve(e.target);}
+});},{threshold:.4});
+document.querySelectorAll('.chart').forEach(function(c){fio.observe(c)});
+
+/* rail nav highlight */
+var links=[].slice.call(document.querySelectorAll('.r-idx a'));
+var sio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return;
+  links.forEach(function(l){l.classList.toggle('on',l.dataset.sec===e.target.id)});
+});},{rootMargin:'-40% 0px -55% 0px'});
+['about','p01','p02','p03','contact'].forEach(function(id){
+  var el=document.getElementById(id);if(el)sio.observe(el);
+});
+})();
+</script>
+</body>
+</html>
